@@ -226,3 +226,4 @@ pg_restore -U postgres -h localhost -d portal_abaxial -v backup_portal_abaxial_Y
 * `GET /api/usuarios` / `POST /api/usuarios` / `PUT /api/usuarios/{id}` / `DELETE /api/usuarios/{id}`
 * `GET /api/roles` / `GET /api/roles/permisos`
 "# Portal_T-cnico" 
+"# Portal_T-cnico" 
