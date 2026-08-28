@@ -1,0 +1,14 @@
+server:
+  forward-headers-strategy: native
+
+spring:
+  jpa:
+    show-sql: false
+  flyway:
+    clean-disabled: true
+
+logging:
+  level:
+    root: INFO
+    com.abaxial.portal: INFO
+    org.springframework.security: WARN

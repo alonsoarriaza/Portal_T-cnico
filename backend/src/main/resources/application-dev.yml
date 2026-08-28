@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    password: ${DB_PASSWORD:1234}
+  jpa:
+    show-sql: true
+  flyway:
+    clean-disabled: false
+
+logging:
+  level:
+    com.abaxial.portal: DEBUG
+    org.springframework.security: INFO

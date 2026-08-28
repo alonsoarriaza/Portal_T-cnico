@@ -1,0 +1,45 @@
+-- V1__crear_esquema_seguridad.sql
+-- ABAXIAL PORTAL TÉCNICO: Esquema de Usuarios, Roles y Permisos
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id BIGSERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    apellidos VARCHAR(100) NOT NULL,
+    activo BOOLEAN NOT NULL DEFAULT TRUE,
+    fecha_alta TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    fecha_modificacion TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    fecha_eliminacion TIMESTAMP WITH TIME ZONE,
+    eliminado_por BIGINT REFERENCES usuarios(id) ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS roles (
+    id BIGSERIAL PRIMARY KEY,
+    codigo VARCHAR(50) NOT NULL UNIQUE,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(255),
+    activo BOOLEAN NOT NULL DEFAULT TRUE,
+    fecha_creacion TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS permisos (
+    id BIGSERIAL PRIMARY KEY,
+    codigo VARCHAR(50) NOT NULL UNIQUE,
+    nombre VARCHAR(100) NOT NULL,
+    categoria VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS usuario_roles (
+    usuario_id BIGINT NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+    rol_id BIGINT NOT NULL REFERENCES roles(id) ON DELETE CASCADE,
+    PRIMARY KEY (usuario_id, rol_id)
+);
+
+CREATE TABLE IF NOT EXISTS rol_permisos (
+    rol_id BIGINT NOT NULL REFERENCES roles(id) ON DELETE CASCADE,
+    permiso_id BIGINT NOT NULL REFERENCES permisos(id) ON DELETE CASCADE,
+    PRIMARY KEY (rol_id, permiso_id)
+);
