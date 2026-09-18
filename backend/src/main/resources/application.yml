@@ -64,6 +64,6 @@ app:
     initial-admin:
       username: ${INITIAL_ADMIN_USERNAME:admin}
       password: ${INITIAL_ADMIN_PASSWORD:AdminAbaxial2026!}
-      email: ${INITIAL_ADMIN_EMAIL:admin@abaxial.es}
+      email: ${INITIAL_ADMIN_EMAIL:admin@coanda.es}
       nombre: "Super"
       apellidos: "Administrador"

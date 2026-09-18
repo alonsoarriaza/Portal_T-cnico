@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Shield, Lock, User, ArrowRight, Eye, EyeOff, Sparkles } from 'lucide-react';
+import { Shield, Lock, User, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../contexts/ToastContext';
 import { Button } from '../components/common/Button';
@@ -42,12 +42,6 @@ export const LoginPage: React.FC = () => {
     handleLogin(usernameOrEmail, password);
   };
 
-  const handleAutoFillAndLogin = () => {
-    setUsernameOrEmail('admin');
-    setPassword('AdminCoanda2026!');
-    handleLogin('admin', 'AdminCoanda2026!');
-  };
-
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-md bg-white border border-slate-200 rounded-2xl shadow-xl p-6 sm:p-8 space-y-6">
@@ -68,23 +62,6 @@ export const LoginPage: React.FC = () => {
               Acceso exclusivo para soporte y gestión técnica
             </p>
           </div>
-        </div>
-
-        {/* Quick Fill Button */}
-        <button
-          type="button"
-          onClick={handleAutoFillAndLogin}
-          disabled={isLoading}
-          className="w-full py-2.5 px-4 bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-700 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.99]"
-        >
-          <Sparkles className="w-4 h-4 text-brand-600" />
-          <span>Acceso Rápido Administrador (1 clic)</span>
-        </button>
-
-        <div className="relative flex py-1 items-center">
-          <div className="flex-grow border-t border-slate-200"></div>
-          <span className="flex-shrink mx-3 text-slate-400 text-xs uppercase font-semibold">o con tus credenciales</span>
-          <div className="flex-grow border-t border-slate-200"></div>
         </div>
 
         {/* Form */}
@@ -130,12 +107,6 @@ export const LoginPage: React.FC = () => {
             Iniciar Sesión
           </Button>
         </form>
-
-        <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center text-xs text-slate-600 space-y-1">
-          <div className="font-semibold text-slate-800">Credenciales por defecto:</div>
-          <div>Usuario: <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-slate-900 font-bold">admin</code></div>
-          <div>Contraseña: <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-slate-900 font-bold">AdminCoanda2026!</code> o <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-slate-900 font-bold">admin</code></div>
-        </div>
       </div>
 
       {/* Footer Branding for Login */}
