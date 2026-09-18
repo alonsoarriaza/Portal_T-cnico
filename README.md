@@ -1,4 +1,4 @@
-# COANDA — PORTAL TÉCNICO PARA GESTIÓN Y SOPORTE
+# PORTAL TÉCNICO PARA GESTIÓN Y SOPORTE
 
 Portal web empresarial integral para la gestión centralizada de clientes, soporte técnico, parque informático de equipos, servicios contratados, sitios web, gestión documental con control de versiones inmutable, cronograma de intervenciones, auditoría en tiempo real y administración granular de usuarios con RBAC.
 
