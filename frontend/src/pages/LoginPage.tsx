@@ -49,19 +49,25 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white border border-slate-200 rounded-2xl shadow-xl p-8 space-y-6">
+    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white border border-slate-200 rounded-2xl shadow-xl p-6 sm:p-8 space-y-6">
         {/* Header Branding */}
-        <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-xl bg-brand-600 flex items-center justify-center text-white font-black text-xl mx-auto shadow-md">
-            A
+        <div className="text-center space-y-3">
+          <div className="w-20 h-20 rounded-2xl bg-white border border-slate-200/80 flex items-center justify-center p-2 mx-auto shadow-md">
+            <img
+              src="/logo-abaxial.png"
+              alt="Logo Abaxial"
+              className="w-full h-full object-contain"
+            />
           </div>
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-            Portal ABAXIAL
-          </h1>
-          <p className="text-xs text-slate-500">
-            Acceso exclusivo para soporte y gestión técnica
-          </p>
+          <div>
+            <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+              Portal Abaxial
+            </h1>
+            <p className="text-xs text-slate-500 mt-1">
+              Acceso exclusivo para soporte y gestión técnica
+            </p>
+          </div>
         </div>
 
         {/* Quick Fill Button */}
@@ -130,6 +136,21 @@ export const LoginPage: React.FC = () => {
           <div>Usuario: <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-slate-900 font-bold">admin</code></div>
           <div>Contraseña: <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-slate-900 font-bold">AdminAbaxial2026!</code> o <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-slate-900 font-bold">admin</code></div>
         </div>
+      </div>
+
+      {/* Footer Branding for Login */}
+      <div className="text-center space-y-2 select-none">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-xs border border-slate-200 shadow-xs text-xs text-slate-600">
+          <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-brand-600 to-emerald-500 flex items-center justify-center text-white font-black text-[9px] shadow-xs">
+            AF
+          </div>
+          <span>
+            Web creada y gestionada por <strong className="text-slate-900 font-semibold">Alonso Feria Arriaza</strong>
+          </span>
+        </div>
+        <p className="text-[11px] text-slate-400">
+          © {new Date().getFullYear()} Abaxial · Portal Técnico Empresarial · Todos los derechos reservados
+        </p>
       </div>
     </div>
   );

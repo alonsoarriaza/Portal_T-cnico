@@ -26,6 +26,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +39,7 @@ import java.util.stream.Collectors;
 public class DocumentoService {
 
     private static final Set<String> ALLOWED_EXTENSIONS = Set.of(
-            "docx", "doc", "pdf", "xlsx", "xls", "pptx", "ppt", "txt",
+            "docx", "doc", "pdf", "xlsx", "xls", "pptx", "ppt", "txt", "html", "htm",
             "jpg", "jpeg", "png", "webp", "zip", "rar", "7z", "csv", "xml", "json"
     );
 
@@ -63,8 +64,8 @@ public class DocumentoService {
     @Transactional(readOnly = true)
     public List<DocumentoDTO> listarPorCliente(Long clienteId, boolean soloActivos) {
         List<Documento> list = soloActivos
-                ? documentoRepository.findByClienteIdAndActivoTrueOrderByFechaCreacionDesc(clienteId)
-                : documentoRepository.findByClienteIdOrderByFechaCreacionDesc(clienteId);
+                ? documentoRepository.findByClienteIdAndActivoTrueOrderByNombreOriginalAsc(clienteId)
+                : documentoRepository.findByClienteIdOrderByNombreOriginalAsc(clienteId);
         return list.stream().map(DocumentoDTO::fromEntity).collect(Collectors.toList());
     }
 
@@ -105,7 +106,7 @@ public class DocumentoService {
         Documento documento = Documento.builder()
                 .cliente(cliente)
                 .nombreOriginal(originalFilename)
-                .categoria(categoria != null && !categoria.isBlank() ? categoria : "GENERAL")
+                .categoria("GENERAL")
                 .descripcion(descripcion)
                 .versionActual(1)
                 .activo(true)
@@ -128,6 +129,84 @@ public class DocumentoService {
         );
 
         return DocumentoDTO.fromEntity(docGuardado);
+    }
+
+    @Transactional
+    public List<DocumentoDTO> subirDocumentosMultiples(
+            Long clienteId, String categoria, String descripcion,
+            List<MultipartFile> files, String currentUsername
+    ) {
+        if (files == null || files.isEmpty()) {
+            throw new BadRequestException("No se han seleccionado archivos para subir");
+        }
+
+        Cliente cliente = clienteRepository.findById(clienteId)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado con ID: " + clienteId));
+
+        Usuario usuario = usuarioRepository.findByUsername(currentUsername).orElse(null);
+        List<DocumentoDTO> resultados = new ArrayList<>();
+
+        for (MultipartFile file : files) {
+            if (file == null || file.isEmpty()) continue;
+            validateFile(file);
+
+            String originalFilename = StringUtils.cleanPath(file.getOriginalFilename() != null ? file.getOriginalFilename() : "documento");
+
+            Optional<Documento> docExistente = documentoRepository.findByClienteIdAndNombreOriginalAndActivoTrue(clienteId, originalFilename);
+            if (docExistente.isPresent()) {
+                // Si el documento ya existe para este cliente, se genera automáticamente una nueva versión
+                Documento existente = docExistente.get();
+                int nuevaVersionNum = existente.getVersionActual() + 1;
+
+                DocumentoVersion nuevaVersion = createAndStoreVersion(existente, nuevaVersionNum, file, usuario);
+                existente.setVersionActual(nuevaVersionNum);
+                existente.setFechaModificacion(LocalDateTime.now());
+                if (descripcion != null && !descripcion.isBlank()) {
+                    existente.setDescripcion(descripcion);
+                }
+                existente.setCategoria("GENERAL");
+                existente.getVersiones().add(0, nuevaVersion);
+                Documento actualizado = documentoRepository.save(existente);
+
+                auditoriaService.registrarAsync(
+                        currentUsername,
+                        "DOCUMENTO_NUEVA_VERSION",
+                        "Documento",
+                        actualizado.getId(),
+                        "Nueva versión (v" + nuevaVersionNum + ") subida en lote para: " + existente.getNombreOriginal() + " (" + formatFileSize(file.getSize()) + ")"
+                );
+
+                resultados.add(DocumentoDTO.fromEntity(actualizado));
+            } else {
+                // Nuevo documento
+                Documento nuevo = Documento.builder()
+                        .cliente(cliente)
+                        .nombreOriginal(originalFilename)
+                        .categoria("GENERAL")
+                        .descripcion(descripcion)
+                        .versionActual(1)
+                        .activo(true)
+                        .fechaCreacion(LocalDateTime.now())
+                        .fechaModificacion(LocalDateTime.now())
+                        .build();
+
+                Documento guardado = documentoRepository.save(nuevo);
+                DocumentoVersion version1 = createAndStoreVersion(guardado, 1, file, usuario);
+                guardado.getVersiones().add(version1);
+
+                auditoriaService.registrarAsync(
+                        currentUsername,
+                        "DOCUMENTO_SUBIDO",
+                        "Documento",
+                        guardado.getId(),
+                        "Documento subido (v1) en lote: " + originalFilename + " (" + formatFileSize(file.getSize()) + ") para Cliente " + cliente.getNombre()
+                );
+
+                resultados.add(DocumentoDTO.fromEntity(guardado));
+            }
+        }
+
+        return resultados;
     }
 
     @Transactional

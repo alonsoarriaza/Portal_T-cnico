@@ -30,6 +30,7 @@ import {
   UserCheck,
   UserX,
   Trash2,
+  Search,
 } from 'lucide-react';
 import {
   clientesApi,
@@ -44,6 +45,7 @@ import {
   ClienteDetail,
   ClienteRequest,
   ContactoRequest,
+  Equipo,
   EquipoRequest,
   ServicioRequest,
   WebRequest,
@@ -82,20 +84,58 @@ export const ClienteDetailPage: React.FC = () => {
 
   // Forms
   const [contactForm, setContactForm] = useState<ContactoRequest>({ nombre: '', apellidos: '', cargo: '', email: '', telefono: '', telefonoFijo: '', observaciones: '' });
-  const [equipoForm, setEquipoForm] = useState<EquipoRequest>({ tipo: 'PC Sobremesa', marca: '', modelo: '', numeroSerie: '', estado: 'OPERATIVO', observaciones: '' });
+  const [equipoForm, setEquipoForm] = useState<EquipoRequest>({
+    codigoInventario: '',
+    nombreEquipo: '',
+    tipo: 'Portátil',
+    ubicacion: '',
+    estado: 'Alta',
+    ultimaRevision: '',
+    url: '',
+    marca: '',
+    modelo: '',
+    numeroSerie: '',
+    observaciones: '',
+  });
+
+  // Equipos management state
+  const [equipoSearchTerm, setEquipoSearchTerm] = useState('');
+  const [equipoPageSize, setEquipoPageSize] = useState<number | 'all'>(10);
+  const [equipoSubTab, setEquipoSubTab] = useState<'lista' | 'editar'>('lista');
+  const [selectedEquipoToEdit, setSelectedEquipoToEdit] = useState<Equipo | null>(null);
+  const [isEditEquipoModalOpen, setIsEditEquipoModalOpen] = useState(false);
+  const [savingEquipo, setSavingEquipo] = useState(false);
+  const [editEquipoForm, setEditEquipoForm] = useState<EquipoRequest>({
+    codigoInventario: '',
+    nombreEquipo: '',
+    tipo: 'Portátil',
+    ubicacion: '',
+    estado: 'Alta',
+    ultimaRevision: '',
+    url: '',
+    marca: '',
+    modelo: '',
+    numeroSerie: '',
+    observaciones: '',
+  });
+
   const [servicioForm, setServicioForm] = useState<ServicioRequest>({ nombre: '', descripcion: '', estado: 'ACTIVO', observaciones: '' });
   const [webForm, setWebForm] = useState<WebRequest>({ nombre: '', url: '', estado: 'ONLINE', descripcion: '', observaciones: '' });
   const [eventForm, setEventForm] = useState<EventoRequest>({ titulo: '', descripcion: '', fechaInicio: '', prioridad: 'MEDIA', estado: 'PENDIENTE' });
 
-  // Document Upload
+  // Document Upload & Delete
+  const [uploadFiles, setUploadFiles] = useState<File[]>([]);
   const [uploadFile, setUploadFile] = useState<File | null>(null);
-  const [docCategoria, setDocCategoria] = useState('CONTRATOS');
+  const [docCategoria, setDocCategoria] = useState('GENERAL');
   const [docDescripcion, setDocDescripcion] = useState('');
   const [uploadProgress, setUploadProgress] = useState<number | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [conflictDocInfo, setConflictDocInfo] = useState<{ id: number; name: string; version: number } | null>(null);
   const [selectedDocForHistory, setSelectedDocForHistory] = useState<Documento | null>(null);
   const [expandedDocIds, setExpandedDocIds] = useState<Record<number, boolean>>({});
+  const [docVersionLimit, setDocVersionLimit] = useState<number | 'all'>(10);
+  const [docToDelete, setDocToDelete] = useState<{ id: number; name: string } | null>(null);
+  const [isDeletingDoc, setIsDeletingDoc] = useState(false);
 
   const [isEditingClient, setIsEditingClient] = useState(false);
   const [savingClient, setSavingClient] = useState(false);
@@ -241,11 +281,89 @@ export const ClienteDetailPage: React.FC = () => {
     if (!equipoForm.tipo.trim()) return;
     try {
       await equiposApi.create(clienteId, equipoForm);
-      success('Equipo añadido');
+      success('Equipo añadido al inventario');
       setIsEquipoModalOpen(false);
+      setEquipoForm({
+        codigoInventario: '',
+        nombreEquipo: '',
+        tipo: 'Portátil',
+        ubicacion: '',
+        estado: 'Alta',
+        ultimaRevision: '',
+        url: '',
+        marca: '',
+        modelo: '',
+        numeroSerie: '',
+        observaciones: '',
+      });
       loadCliente();
     } catch (err: any) {
       error(err.response?.data?.message || 'Error registrando equipo');
+    }
+  };
+
+  const handleOpenEditEquipo = (eq: Equipo) => {
+    setSelectedEquipoToEdit(eq);
+    setEditEquipoForm({
+      codigoInventario: eq.codigoInventario || '',
+      nombreEquipo: eq.nombreEquipo || '',
+      tipo: eq.tipo || 'Portátil',
+      ubicacion: eq.ubicacion || '',
+      estado: eq.estado || 'Alta',
+      ultimaRevision: eq.ultimaRevision || '',
+      url: eq.url || '',
+      marca: eq.marca || '',
+      modelo: eq.modelo || '',
+      numeroSerie: eq.numeroSerie || '',
+      observaciones: eq.observaciones || '',
+      activo: eq.activo,
+    });
+    setIsEditEquipoModalOpen(true);
+  };
+
+  const handleOpenEditEquipoInTab = (eq: Equipo) => {
+    setSelectedEquipoToEdit(eq);
+    setEditEquipoForm({
+      codigoInventario: eq.codigoInventario || '',
+      nombreEquipo: eq.nombreEquipo || '',
+      tipo: eq.tipo || 'Portátil',
+      ubicacion: eq.ubicacion || '',
+      estado: eq.estado || 'Alta',
+      ultimaRevision: eq.ultimaRevision || '',
+      url: eq.url || '',
+      marca: eq.marca || '',
+      modelo: eq.modelo || '',
+      numeroSerie: eq.numeroSerie || '',
+      observaciones: eq.observaciones || '',
+      activo: eq.activo,
+    });
+    setEquipoSubTab('editar');
+  };
+
+  const handleSaveEditEquipo = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!selectedEquipoToEdit) return;
+    try {
+      setSavingEquipo(true);
+      await equiposApi.update(selectedEquipoToEdit.id, editEquipoForm);
+      success(`Equipo "${editEquipoForm.nombreEquipo || editEquipoForm.codigoInventario}" guardado correctamente`);
+      setIsEditEquipoModalOpen(false);
+      loadCliente();
+    } catch (err: any) {
+      error(err.response?.data?.message || 'Error al actualizar el equipo');
+    } finally {
+      setSavingEquipo(false);
+    }
+  };
+
+  const handleDeleteEquipo = async (eq: Equipo) => {
+    if (!window.confirm(`¿Estás seguro de que deseas eliminar o dar de baja el equipo "${eq.nombreEquipo || eq.codigoInventario}"?`)) return;
+    try {
+      await equiposApi.deactivate(eq.id);
+      success(`Equipo dado de baja correctamente`);
+      loadCliente();
+    } catch (err: any) {
+      error(err.response?.data?.message || 'Error al eliminar el equipo');
     }
   };
 
@@ -288,37 +406,46 @@ export const ClienteDetailPage: React.FC = () => {
     }
   };
 
+  const handleFilesSelected = (selected: FileList | null) => {
+    if (!selected) return;
+    const newFiles = Array.from(selected);
+    setUploadFiles((prev) => {
+      const existingKeys = new Set(prev.map((f) => `${f.name}_${f.size}`));
+      const filtered = newFiles.filter((f) => !existingKeys.has(`${f.name}_${f.size}`));
+      return [...prev, ...filtered];
+    });
+  };
+
+  const handleRemoveFile = (index: number) => {
+    setUploadFiles((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const handleClearFiles = () => {
+    setUploadFiles([]);
+  };
+
   const handleUploadDocument = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!uploadFile) {
-      error('Selecciona un archivo para subir');
+    if (uploadFiles.length === 0) {
+      error('Selecciona al menos un archivo para subir');
       return;
     }
 
     try {
       setIsUploading(true);
       setUploadProgress(0);
-      await documentosApi.upload(clienteId, uploadFile, docCategoria, docDescripcion, (percent) => {
+      const subidos = await documentosApi.uploadBatch(clienteId, uploadFiles, docCategoria, docDescripcion, (percent) => {
         setUploadProgress(percent);
       });
-      success('Documento subido correctamente');
+      const count = subidos ? subidos.length : uploadFiles.length;
+      success(`${count} documento${count > 1 ? 's' : ''} subido${count > 1 ? 's' : ''} correctamente`);
       setIsDocModalOpen(false);
-      setUploadFile(null);
+      setUploadFiles([]);
+      setDocDescripcion('');
       setUploadProgress(null);
       loadCliente();
     } catch (err: any) {
-      if (err.response?.status === 409 && err.response?.data?.data?.canCreateNewVersion) {
-        const conflictData = err.response.data.data;
-        setConflictDocInfo({
-          id: conflictData.existingDocumentId,
-          name: conflictData.existingDocumentName,
-          version: conflictData.currentVersion,
-        });
-        setIsDocModalOpen(false);
-        setIsDocVersionConflictModalOpen(true);
-      } else {
-        error(err.response?.data?.message || 'Error al subir el documento');
-      }
+      error(err.response?.data?.message || 'Error al subir los documentos');
     } finally {
       setIsUploading(false);
     }
@@ -358,6 +485,21 @@ export const ClienteDetailPage: React.FC = () => {
       success('Descarga iniciada');
     } catch (err) {
       error('Error al descargar archivo');
+    }
+  };
+
+  const handleConfirmDeleteDoc = async () => {
+    if (!docToDelete) return;
+    try {
+      setIsDeletingDoc(true);
+      await documentosApi.delete(docToDelete.id);
+      success(`Documento "${docToDelete.name}" eliminado correctamente`);
+      setDocToDelete(null);
+      loadCliente();
+    } catch (err: any) {
+      error(err.response?.data?.message || 'Error al eliminar el documento');
+    } finally {
+      setIsDeletingDoc(false);
     }
   };
 
@@ -578,10 +720,10 @@ export const ClienteDetailPage: React.FC = () => {
                     <select
                       value={editClientForm.estado}
                       onChange={(e) => setEditClientForm({ ...editClientForm, estado: e.target.value })}
-                      className="w-full px-3.5 py-2 text-xs font-semibold rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white"
+                      className="w-full px-3.5 py-2 text-xs font-semibold rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white text-slate-900"
                     >
-                      <option value="ALTA">Alta</option>
-                      <option value="BAJA">Baja</option>
+                      <option value="ALTA" className="text-slate-900 bg-white">Alta</option>
+                      <option value="BAJA" className="text-slate-900 bg-white">Baja</option>
                     </select>
                   </div>
 
@@ -592,11 +734,11 @@ export const ClienteDetailPage: React.FC = () => {
                     <select
                       value={editClientForm.mantenimiento}
                       onChange={(e) => setEditClientForm({ ...editClientForm, mantenimiento: e.target.value })}
-                      className="w-full px-3.5 py-2 text-xs font-semibold rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white"
+                      className="w-full px-3.5 py-2 text-xs font-semibold rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white text-slate-900"
                     >
-                      <option value="ESTANDAR">Estándar</option>
-                      <option value="PREMIUM">Premium</option>
-                      <option value="SIN_MANTENIMIENTO">Sin Mantenimiento</option>
+                      <option value="ESTANDAR" className="text-slate-900 bg-white">Estándar</option>
+                      <option value="PREMIUM" className="text-slate-900 bg-white">Premium</option>
+                      <option value="SIN_MANTENIMIENTO" className="text-slate-900 bg-white">Sin Mantenimiento</option>
                     </select>
                   </div>
 
@@ -731,50 +873,420 @@ export const ClienteDetailPage: React.FC = () => {
         {/* TAB 3: EQUIPOS */}
         {activeTab === 'equipos' && (
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-base font-bold text-slate-900">Parque Informático e Inventario</h3>
-              {hasPermission('EQUIPO_CREAR') && (
-                <Button variant="primary" size="sm" onClick={() => setIsEquipoModalOpen(true)} leftIcon={<Plus className="w-4 h-4" />}>
+            {/* Subtab Navigation inside Equipos */}
+            <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setEquipoSubTab('lista')}
+                  className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors ${
+                    equipoSubTab === 'lista'
+                      ? 'bg-brand-600 text-white shadow-xs'
+                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  }`}
+                >
+                  Lista de Equipos ({cliente.equipos?.length || 0})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!selectedEquipoToEdit && cliente.equipos && cliente.equipos.length > 0) {
+                      handleOpenEditEquipoInTab(cliente.equipos[0]);
+                    } else {
+                      setEquipoSubTab('editar');
+                    }
+                  }}
+                  className={`px-3.5 py-1.5 text-xs font-bold rounded-lg transition-colors flex items-center gap-1.5 ${
+                    equipoSubTab === 'editar'
+                      ? 'bg-brand-600 text-white shadow-xs'
+                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  }`}
+                >
+                  <Edit2 className="w-3.5 h-3.5" />
+                  <span>Editar Campos</span>
+                </button>
+              </div>
+
+              {equipoSubTab === 'lista' && hasPermission('EQUIPO_CREAR') && (
+                <Button
+                  variant="primary"
+                  size="sm"
+                  onClick={() => setIsEquipoModalOpen(true)}
+                  leftIcon={<Plus className="w-4 h-4" />}
+                >
                   Añadir Equipo
                 </Button>
               )}
             </div>
-            {cliente.equipos && cliente.equipos.length > 0 ? (
-              <div className="overflow-x-auto border border-slate-200 rounded-xl">
-                <table className="w-full text-left text-sm text-slate-700">
-                  <thead className="bg-slate-50 border-b border-slate-200 text-xs font-bold uppercase text-slate-600">
-                    <tr>
-                      <th className="px-4 py-3.5">Cód. Inventario</th>
-                      <th className="px-4 py-3.5">Tipo</th>
-                      <th className="px-4 py-3.5">Marca / Modelo</th>
-                      <th className="px-4 py-3.5">Nº Serie</th>
-                      <th className="px-4 py-3.5">Estado</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    {cliente.equipos.map((eq) => (
-                      <tr key={eq.id} className="hover:bg-slate-50">
-                        <td className="px-4 py-3 font-mono font-bold text-brand-600 text-xs">{eq.codigoInventario}</td>
-                        <td className="px-4 py-3 font-semibold text-slate-900">{eq.tipo}</td>
-                        <td className="px-4 py-3">{eq.marca} {eq.modelo}</td>
-                        <td className="px-4 py-3 font-mono text-xs text-slate-500">{eq.numeroSerie || '-'}</td>
-                        <td className="px-4 py-3">
-                          <Badge variant={eq.estado === 'OPERATIVO' ? 'emerald' : 'amber'} size="sm">
-                            {eq.estado}
-                          </Badge>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+
+            {/* SUBTAB 1: LISTA DE EQUIPOS */}
+            {equipoSubTab === 'lista' && (
+              <div className="space-y-4">
+                {/* Table Title matching legacy support format */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-50/80 p-3.5 rounded-xl border border-slate-200/80">
+                  <div>
+                    <h3 className="text-sm font-bold text-slate-900">
+                      Lista de equipos del cliente <span className="text-brand-700">{cliente.nombre}</span>.
+                    </h3>
+                  </div>
+
+                  {/* Filter & Search Toolbar */}
+                  <div className="flex flex-wrap items-center gap-4">
+                    {/* Page Size Selector */}
+                    <div className="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                      <span>Mostrar</span>
+                      <div className="inline-flex rounded-lg border border-slate-200 bg-white p-0.5 shadow-2xs">
+                        {([10, 50, 100, 'Todos'] as const).map((sz) => {
+                          const isSelected = (sz === 'Todos' && equipoPageSize === 'all') || equipoPageSize === sz;
+                          return (
+                            <button
+                              key={sz}
+                              type="button"
+                              onClick={() => setEquipoPageSize(sz === 'Todos' ? 'all' : sz)}
+                              className={`px-2.5 py-1 text-xs font-bold rounded-md transition-all ${
+                                isSelected
+                                  ? 'bg-brand-600 text-white shadow-xs font-black'
+                                  : 'text-slate-600 hover:text-slate-900'
+                              }`}
+                            >
+                              {sz}
+                            </button>
+                          );
+                        })}
+                      </div>
+                      <span>registros</span>
+                    </div>
+
+                    {/* Search Filter */}
+                    <div className="flex items-center gap-2 text-xs text-slate-700 font-semibold">
+                      <span>Buscar:</span>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          value={equipoSearchTerm}
+                          onChange={(e) => setEquipoSearchTerm(e.target.value)}
+                          placeholder="Filtrar por N/S, equipo, tipo..."
+                          className="pl-2.5 pr-7 py-1 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 w-44 sm:w-56 bg-white font-normal"
+                        />
+                        <Search className="w-3.5 h-3.5 text-slate-400 absolute right-2 top-2" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Legacy-style Table */}
+                {cliente.equipos && cliente.equipos.length > 0 ? (
+                  (() => {
+                    const filtered = cliente.equipos.filter((eq) => {
+                      if (!equipoSearchTerm.trim()) return true;
+                      const term = equipoSearchTerm.toLowerCase();
+                      return (
+                        (eq.codigoInventario && eq.codigoInventario.toLowerCase().includes(term)) ||
+                        (eq.numeroSerie && eq.numeroSerie.toLowerCase().includes(term)) ||
+                        (eq.nombreEquipo && eq.nombreEquipo.toLowerCase().includes(term)) ||
+                        (eq.tipo && eq.tipo.toLowerCase().includes(term)) ||
+                        (eq.ubicacion && eq.ubicacion.toLowerCase().includes(term)) ||
+                        (eq.estado && eq.estado.toLowerCase().includes(term)) ||
+                        (eq.ultimaRevision && eq.ultimaRevision.toLowerCase().includes(term))
+                      );
+                    });
+
+                    const displayed = equipoPageSize === 'all'
+                      ? filtered
+                      : filtered.slice(0, Number(equipoPageSize));
+
+                    return (
+                      <div className="overflow-x-auto border border-slate-200 rounded-xl shadow-2xs">
+                        <table className="w-full text-left text-xs text-slate-700">
+                          <thead className="bg-slate-100/80 border-b border-slate-200 text-slate-800 font-bold uppercase tracking-wider text-2xs">
+                            <tr>
+                              <th className="px-4 py-3">N/S</th>
+                              <th className="px-4 py-3">Equipo</th>
+                              <th className="px-4 py-3">Tipo</th>
+                              <th className="px-4 py-3">Ubicación</th>
+                              <th className="px-4 py-3">Estado</th>
+                              <th className="px-4 py-3">Última revisión</th>
+                              <th className="px-4 py-3 text-center">Opciones</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-slate-100 bg-white">
+                            {displayed.map((eq) => (
+                              <tr key={eq.id} className="hover:bg-slate-50/80 transition-colors">
+                                <td className="px-4 py-3 font-mono font-bold text-slate-900 whitespace-nowrap">
+                                  {eq.codigoInventario || eq.numeroSerie}
+                                </td>
+                                <td className="px-4 py-3 font-semibold whitespace-nowrap">
+                                  {eq.url ? (
+                                    <a
+                                      href={eq.url}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="text-brand-600 hover:text-brand-800 underline inline-flex items-center gap-1 font-bold transition-colors"
+                                      title={`Abrir soporte: ${eq.url}`}
+                                    >
+                                      <span>{eq.nombreEquipo || eq.codigoInventario}</span>
+                                      <ExternalLink className="w-3 h-3 text-brand-500 shrink-0" />
+                                    </a>
+                                  ) : (
+                                    <span className="text-slate-900 font-bold">{eq.nombreEquipo || eq.codigoInventario}</span>
+                                  )}
+                                </td>
+                                <td className="px-4 py-3 font-medium text-slate-800 whitespace-nowrap">
+                                  {eq.tipo}
+                                </td>
+                                <td className="px-4 py-3 text-slate-700 font-medium whitespace-nowrap">
+                                  {eq.ubicacion || '-'}
+                                </td>
+                                <td className="px-4 py-3 whitespace-nowrap">
+                                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-bold ${
+                                    eq.estado?.toUpperCase() === 'ALTA' || eq.estado?.toUpperCase() === 'OPERATIVO'
+                                      ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                                      : eq.estado?.toUpperCase() === 'BAJA'
+                                      ? 'bg-rose-100 text-rose-800 border border-rose-200'
+                                      : 'bg-amber-100 text-amber-800 border border-amber-200'
+                                  }`}>
+                                    {eq.estado || 'Alta'}
+                                  </span>
+                                </td>
+                                <td className="px-4 py-3 whitespace-nowrap">
+                                  <span className={`text-xs ${
+                                    eq.ultimaRevision && eq.ultimaRevision !== 'Sin acciones'
+                                      ? 'text-slate-800 font-semibold'
+                                      : 'text-slate-400 italic'
+                                  }`}>
+                                    {eq.ultimaRevision || 'Sin acciones'}
+                                  </span>
+                                </td>
+                                <td className="px-4 py-3 whitespace-nowrap text-center">
+                                  <div className="inline-flex items-center gap-1.5">
+                                    <button
+                                      type="button"
+                                      onClick={() => handleOpenEditEquipo(eq)}
+                                      className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold rounded-lg text-brand-700 hover:bg-brand-50 border border-brand-200 transition-colors shadow-2xs"
+                                      title="Editar los campos de este equipo"
+                                    >
+                                      <Edit2 className="w-3.5 h-3.5 text-brand-600" />
+                                      <span>Editar</span>
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleOpenEditEquipoInTab(eq)}
+                                      className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-lg text-slate-600 hover:bg-slate-100 border border-slate-200 transition-colors"
+                                      title="Editar en la pestaña de campos"
+                                    >
+                                      Pestaña
+                                    </button>
+                                    {hasPermission('EQUIPO_ELIMINAR') && (
+                                      <button
+                                        type="button"
+                                        onClick={() => handleDeleteEquipo(eq)}
+                                        className="p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
+                                        title="Eliminar o dar de baja"
+                                      >
+                                        <Trash2 className="w-3.5 h-3.5" />
+                                      </button>
+                                    )}
+                                  </div>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    );
+                  })()
+                ) : (
+                  <EmptyState
+                    title="No hay equipos"
+                    description="Registra equipos informáticos y dispositivos del cliente."
+                    actionText={hasPermission('EQUIPO_CREAR') ? 'Añadir Equipo' : undefined}
+                    onAction={hasPermission('EQUIPO_CREAR') ? () => setIsEquipoModalOpen(true) : undefined}
+                  />
+                )}
               </div>
-            ) : (
-              <EmptyState
-                title="No hay equipos"
-                description="Registra equipos informáticos y dispositivos del cliente."
-                actionText={hasPermission('EQUIPO_CREAR') ? 'Añadir Equipo' : undefined}
-                onAction={hasPermission('EQUIPO_CREAR') ? () => setIsEquipoModalOpen(true) : undefined}
-              />
+            )}
+
+            {/* SUBTAB 2: PESTAÑA PARA EDITAR LOS CAMPOS */}
+            {equipoSubTab === 'editar' && (
+              <div className="space-y-5 bg-slate-50/60 p-5 rounded-2xl border border-slate-200">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-3">
+                  <div>
+                    <h4 className="text-base font-black text-slate-900 flex items-center gap-2">
+                      <Edit2 className="w-4 h-4 text-brand-600" />
+                      <span>Editar Campos del Equipo</span>
+                    </h4>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      Selecciona un equipo de la lista para modificar sus campos y guardar los cambios.
+                    </p>
+                  </div>
+
+                  {/* Selector de equipo a editar */}
+                  {cliente.equipos && cliente.equipos.length > 0 && (
+                    <div className="flex items-center gap-2">
+                      <label className="text-xs font-bold text-slate-700 whitespace-nowrap">Equipo a editar:</label>
+                      <select
+                        value={selectedEquipoToEdit?.id || ''}
+                        onChange={(e) => {
+                          const targetId = Number(e.target.value);
+                          const eq = cliente.equipos?.find((item) => item.id === targetId);
+                          if (eq) handleOpenEditEquipoInTab(eq);
+                        }}
+                        className="px-3 py-1.5 text-xs font-bold rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 text-slate-800"
+                      >
+                        {cliente.equipos.map((eq) => (
+                          <option key={eq.id} value={eq.id}>
+                            {eq.codigoInventario} — {eq.nombreEquipo || eq.tipo} ({eq.ubicacion || 'Sin ubicación'})
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+                </div>
+
+                {selectedEquipoToEdit ? (
+                  <form onSubmit={handleSaveEditEquipo} className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {/* N/S */}
+                      <Input
+                        label="N/S / Cód. Inventario *"
+                        value={editEquipoForm.codigoInventario || ''}
+                        onChange={(e) => setEditEquipoForm({ ...editEquipoForm, codigoInventario: e.target.value })}
+                        required
+                        placeholder="Ej. 43037-00"
+                      />
+
+                      {/* Nombre Equipo */}
+                      <Input
+                        label="Nombre del Equipo *"
+                        value={editEquipoForm.nombreEquipo || ''}
+                        onChange={(e) => setEditEquipoForm({ ...editEquipoForm, nombreEquipo: e.target.value })}
+                        placeholder="Ej. siem-sglados, recepcion..."
+                      />
+
+                      {/* Tipo */}
+                      <Select
+                        label="Tipo de Equipo *"
+                        value={editEquipoForm.tipo}
+                        onChange={(e) => setEditEquipoForm({ ...editEquipoForm, tipo: e.target.value })}
+                      >
+                        <option value="Portátil">Portátil</option>
+                        <option value="Sobremesa">Sobremesa</option>
+                        <option value="Servidor">Servidor</option>
+                        <option value="Router / Switch">Router / Switch</option>
+                        <option value="Impresora">Impresora</option>
+                        <option value="SAI / UPS">SAI / UPS</option>
+                        <option value="Otro">Otro</option>
+                      </Select>
+
+                      {/* Ubicación */}
+                      <Input
+                        label="Ubicación"
+                        value={editEquipoForm.ubicacion || ''}
+                        onChange={(e) => setEditEquipoForm({ ...editEquipoForm, ubicacion: e.target.value })}
+                        placeholder="Ej. Despacho Susana, Recepción, Oficina..."
+                      />
+
+                      {/* Estado */}
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+                          Estado
+                        </label>
+                        <select
+                          value={editEquipoForm.estado || 'Alta'}
+                          onChange={(e) => setEditEquipoForm({ ...editEquipoForm, estado: e.target.value })}
+                          className="w-full px-3.5 py-2 text-xs font-semibold rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white text-slate-900"
+                        >
+                          <option value="Alta" className="text-slate-900 bg-white">Alta</option>
+                          <option value="Baja" className="text-slate-900 bg-white">Baja</option>
+                          <option value="OPERATIVO" className="text-slate-900 bg-white">OPERATIVO</option>
+                          <option value="EN_REPARACION" className="text-slate-900 bg-white">EN REPARACIÓN</option>
+                          <option value="OBSOLETO" className="text-slate-900 bg-white">OBSOLETO</option>
+                        </select>
+                      </div>
+
+                      {/* Última revisión */}
+                      <Input
+                        label="Última Revisión"
+                        value={editEquipoForm.ultimaRevision || ''}
+                        onChange={(e) => setEditEquipoForm({ ...editEquipoForm, ultimaRevision: e.target.value })}
+                        placeholder="Ej. 13/06/2014 10:45 o Sin acciones"
+                      />
+
+                      {/* URL Enlace Soporte */}
+                      <div className="sm:col-span-2">
+                        <Input
+                          label="URL Enlace de Soporte Abaxial"
+                          value={editEquipoForm.url || ''}
+                          onChange={(e) => setEditEquipoForm({ ...editEquipoForm, url: e.target.value })}
+                          placeholder="https://soporte.abaxial.es/pc_list.php?ref=43037-00"
+                        />
+                      </div>
+
+                      {/* Número de Serie */}
+                      <Input
+                        label="Número de Serie Físico"
+                        value={editEquipoForm.numeroSerie || ''}
+                        onChange={(e) => setEditEquipoForm({ ...editEquipoForm, numeroSerie: e.target.value })}
+                        placeholder="Número de serie del fabricante"
+                      />
+
+                      {/* Marca */}
+                      <Input
+                        label="Marca"
+                        value={editEquipoForm.marca || ''}
+                        onChange={(e) => setEditEquipoForm({ ...editEquipoForm, marca: e.target.value })}
+                        placeholder="Ej. Lenovo, Dell, HP, Toshiba..."
+                      />
+
+                      {/* Modelo */}
+                      <Input
+                        label="Modelo"
+                        value={editEquipoForm.modelo || ''}
+                        onChange={(e) => setEditEquipoForm({ ...editEquipoForm, modelo: e.target.value })}
+                        placeholder="Ej. ThinkPad, Latitude, ProBook..."
+                      />
+                    </div>
+
+                    {/* Observaciones */}
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+                        Observaciones y Notas Técnicas
+                      </label>
+                      <textarea
+                        rows={2}
+                        value={editEquipoForm.observaciones || ''}
+                        onChange={(e) => setEditEquipoForm({ ...editEquipoForm, observaciones: e.target.value })}
+                        placeholder="Notas adicionales sobre este equipo..."
+                        className="w-full px-3.5 py-2 text-xs font-normal rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white"
+                      />
+                    </div>
+
+                    {/* Botones de acción */}
+                    <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => setEquipoSubTab('lista')}
+                      >
+                        Volver a la Lista
+                      </Button>
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        isLoading={savingEquipo}
+                        leftIcon={<Save className="w-4 h-4" />}
+                        className="font-bold"
+                      >
+                        Guardar Cambios en el Equipo
+                      </Button>
+                    </div>
+                  </form>
+                ) : (
+                  <div className="p-8 text-center text-slate-500 text-xs">
+                    Selecciona un equipo de la lista para editar sus campos.
+                  </div>
+                )}
+              </div>
             )}
           </div>
         )}
@@ -870,14 +1382,17 @@ export const ClienteDetailPage: React.FC = () => {
               </div>
               {hasPermission('DOCUMENTO_SUBIR') && (
                 <Button variant="primary" size="sm" onClick={() => setIsDocModalOpen(true)} leftIcon={<Upload className="w-4 h-4" />}>
-                  Subir Documento
+                  Subir Documentos
                 </Button>
               )}
             </div>
 
             {cliente.documentos && cliente.documentos.length > 0 ? (
               <div className="space-y-3">
-                {cliente.documentos.map((doc) => {
+                {(cliente.documentos || [])
+                  .slice()
+                  .sort((a, b) => (a.nombreOriginal || '').localeCompare(b.nombreOriginal || '', undefined, { sensitivity: 'base' }))
+                  .map((doc) => {
                   const isExpanded = expandedDocIds[doc.id] ?? false;
                   return (
                     <div
@@ -895,9 +1410,6 @@ export const ClienteDetailPage: React.FC = () => {
                               <h4 className="font-bold text-slate-900 text-sm">{doc.nombreOriginal}</h4>
                               <Badge variant="purple" size="sm">
                                 v{doc.versionActual} Actual
-                              </Badge>
-                              <Badge variant="cyan" size="sm">
-                                {doc.categoria}
                               </Badge>
                             </div>
                             {doc.descripcion && (
@@ -932,43 +1444,80 @@ export const ClienteDetailPage: React.FC = () => {
                           >
                             Descargar (v{doc.versionActual})
                           </Button>
+                          {hasPermission('DOCUMENTO_ELIMINAR') && (
+                            <button
+                              onClick={() => setDocToDelete({ id: doc.id, name: doc.nombreOriginal })}
+                              className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 border border-slate-200 hover:border-rose-200 transition-colors cursor-pointer"
+                              title="Eliminar documento"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          )}
                         </div>
                       </div>
 
                       {/* Versions Hierarchical Tree / Sub-rows */}
                       {doc.versiones && doc.versiones.length > 0 && (
                         <div className={`divide-y divide-slate-100 border-t border-slate-100 ${!isExpanded && doc.versiones.length > 1 ? 'hidden' : 'block'}`}>
-                          {doc.versiones.map((ver) => (
-                            <div
-                              key={ver.id}
-                              className="p-3 pl-8 sm:pl-12 flex items-center justify-between text-xs hover:bg-slate-50/50 transition-colors"
-                            >
-                              <div className="flex items-center gap-2.5">
-                                <span className={`font-mono font-bold px-2 py-0.5 rounded text-[11px] ${
-                                  ver.version === doc.versionActual
-                                    ? 'bg-purple-100 text-purple-800'
-                                    : 'bg-slate-100 text-slate-600'
-                                }`}>
-                                  v{ver.version} {ver.version === doc.versionActual ? '(Actual)' : ''}
-                                </span>
-                                <span className="font-semibold text-slate-800">{ver.nombreArchivo}</span>
-                                <span className="text-slate-400 font-mono">({formatBytes(ver.tamano)})</span>
-                                <span className="text-slate-400">
-                                  por <strong className="text-slate-600">{ver.usuarioNombre || 'Sistema'}</strong> el{' '}
-                                  {format(new Date(ver.fechaSubida), 'dd/MM/yyyy HH:mm', { locale: es })}
-                                </span>
+                          {/* Selector de visualización de versiones */}
+                          {doc.versiones.length > 1 && (
+                            <div className="p-2.5 bg-slate-50 border-b border-slate-100 flex items-center justify-between text-xs px-8 sm:px-12">
+                              <span className="font-bold text-slate-600 text-[11px]">Mostrar versiones:</span>
+                              <div className="flex items-center gap-1 bg-white p-0.5 rounded-lg border border-slate-200">
+                                {[3, 5, 10, 'all'].map((opt) => (
+                                  <button
+                                    key={String(opt)}
+                                    type="button"
+                                    onClick={() => setDocVersionLimit(opt as any)}
+                                    className={`px-2.5 py-0.5 rounded text-[11px] font-bold transition-all cursor-pointer ${
+                                      docVersionLimit === opt
+                                        ? 'bg-brand-50 text-brand-700 font-extrabold'
+                                        : 'text-slate-500 hover:text-slate-900'
+                                    }`}
+                                  >
+                                    {opt === 'all' ? 'Todas' : opt}
+                                  </button>
+                                ))}
                               </div>
-
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => handleDownloadDoc(doc.id, ver.version, ver.nombreArchivo)}
-                                leftIcon={<Download className="w-3.5 h-3.5" />}
-                              >
-                                Descargar
-                              </Button>
                             </div>
-                          ))}
+                          )}
+
+                          {(() => {
+                            const allVers = (doc.versiones || []).slice().sort((a, b) => b.version - a.version);
+                            const displayed = docVersionLimit === 'all' ? allVers : allVers.slice(0, docVersionLimit);
+
+                            return displayed.map((ver) => (
+                              <div
+                                key={ver.id}
+                                className="p-3 pl-8 sm:pl-12 flex items-center justify-between text-xs hover:bg-slate-50/50 transition-colors"
+                              >
+                                <div className="flex items-center gap-2.5">
+                                  <span className={`font-mono font-bold px-2 py-0.5 rounded text-[11px] ${
+                                    ver.version === doc.versionActual
+                                      ? 'bg-purple-100 text-purple-800'
+                                      : 'bg-slate-100 text-slate-600'
+                                  }`}>
+                                    v{ver.version} {ver.version === doc.versionActual ? '(Actual)' : ''}
+                                  </span>
+                                  <span className="font-semibold text-slate-800">{ver.nombreArchivo}</span>
+                                  <span className="text-slate-400 font-mono">({formatBytes(ver.tamano)})</span>
+                                  <span className="text-slate-400">
+                                    por <strong className="text-slate-600">{ver.usuarioNombre || 'Sistema'}</strong> el{' '}
+                                    {format(new Date(ver.fechaSubida), 'dd/MM/yyyy HH:mm', { locale: es })}
+                                  </span>
+                                </div>
+
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={() => handleDownloadDoc(doc.id, ver.version, ver.nombreArchivo)}
+                                  leftIcon={<Download className="w-3.5 h-3.5" />}
+                                >
+                                  Descargar
+                                </Button>
+                              </div>
+                            ));
+                          })()}
                         </div>
                       )}
                     </div>
@@ -1027,53 +1576,109 @@ export const ClienteDetailPage: React.FC = () => {
         )}
       </div>
 
-      {/* Modal: Subir Documento con Barra de Progreso */}
+      {/* Modal: Subir Documentos Múltiples */}
       <Modal
         isOpen={isDocModalOpen}
-        onClose={() => !isUploading && setIsDocModalOpen(false)}
-        title="Subir Nuevo Documento"
-        size="md"
+        onClose={() => {
+          if (!isUploading) {
+            setIsDocModalOpen(false);
+            setUploadFiles([]);
+          }
+        }}
+        title="Subir Documentos al Cliente"
+        subtitle="Puedes seleccionar y subir varios archivos simultáneamente (PDF, Word, Excel, ZIP, etc.)"
+        size="lg"
       >
         <form onSubmit={handleUploadDocument} className="space-y-4">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
-              Archivo a Subir * (DOCX, PDF, XLSX, PPTX, TXT, ZIP, Imágenes)
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+              Seleccionar Archivos * (Permite múltiples archivos)
             </label>
-            <input
-              type="file"
-              required
-              disabled={isUploading}
-              onChange={(e) => setUploadFile(e.target.files ? e.target.files[0] : null)}
-              className="w-full text-xs text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-brand-600 file:text-white hover:file:bg-brand-700 cursor-pointer"
-            />
+            <div className="relative border-2 border-dashed border-slate-300 hover:border-brand-500 rounded-2xl p-6 text-center bg-slate-50/50 hover:bg-brand-50/20 transition-all cursor-pointer group">
+              <input
+                type="file"
+                multiple
+                disabled={isUploading}
+                onChange={(e) => handleFilesSelected(e.target.files)}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
+              />
+              <div className="flex flex-col items-center justify-center gap-2 pointer-events-none">
+                <div className="w-12 h-12 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Upload className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-sm font-bold text-slate-800">
+                    Arrastra tus archivos aquí o haz clic para explorar
+                  </span>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    Formatos admitidos: DOCX, PDF, XLSX, PPTX, TXT, ZIP, imágenes, CSV (hasta 50 MB por archivo)
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <Select
-            label="Categoría del Documento"
-            value={docCategoria}
-            disabled={isUploading}
-            onChange={(e) => setDocCategoria(e.target.value)}
-          >
-            <option value="CONTRATOS">Contratos y Acuerdos</option>
-            <option value="FACTURAS">Facturas y Presupuestos</option>
-            <option value="INFORMES_TECNICOS">Informes Técnicos</option>
-            <option value="CERTIFICADOS">Certificados y Garantías</option>
-            <option value="GENERAL">General</option>
-          </Select>
+          {/* Selected files list */}
+          {uploadFiles.length > 0 && (
+            <div className="space-y-2 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-700 pb-1 border-b border-slate-200">
+                <span>
+                  {uploadFiles.length} archivo{uploadFiles.length > 1 ? 's' : ''} seleccionado{uploadFiles.length > 1 ? 's' : ''} ({formatBytes(uploadFiles.reduce((acc, f) => acc + f.size, 0))})
+                </span>
+                <button
+                  type="button"
+                  disabled={isUploading}
+                  onClick={handleClearFiles}
+                  className="text-xs text-rose-600 hover:text-rose-800 font-semibold transition-colors disabled:opacity-50"
+                >
+                  Limpiar lista
+                </button>
+              </div>
+              <div className="max-h-44 overflow-y-auto space-y-1.5 pr-1">
+                {uploadFiles.map((file, idx) => (
+                  <div
+                    key={`${file.name}-${idx}`}
+                    className="flex items-center justify-between gap-3 px-3 py-2 bg-white rounded-lg border border-slate-200 text-xs shadow-2xs"
+                  >
+                    <div className="flex items-center gap-2 min-w-0">
+                      <FileText className="w-4 h-4 text-brand-600 shrink-0" />
+                      <span className="font-semibold text-slate-800 truncate" title={file.name}>
+                        {file.name}
+                      </span>
+                      <span className="text-slate-400 font-mono text-[11px] shrink-0">
+                        ({formatBytes(file.size)})
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      disabled={isUploading}
+                      onClick={() => handleRemoveFile(idx)}
+                      className="p-1 rounded-md text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors shrink-0"
+                      title="Quitar archivo"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
-          <Input
-            label="Descripción o Notas (Opcional)"
-            placeholder="Detalles sobre el contenido del documento..."
-            value={docDescripcion}
-            disabled={isUploading}
-            onChange={(e) => setDocDescripcion(e.target.value)}
-          />
+          <div>
+            <Input
+              label="Descripción o Notas del Lote (Opcional)"
+              placeholder="Ej. Documentación inicial de auditoría..."
+              value={docDescripcion}
+              disabled={isUploading}
+              onChange={(e) => setDocDescripcion(e.target.value)}
+            />
+          </div>
 
           {/* Real upload progress bar */}
           {isUploading && uploadProgress !== null && (
             <div className="space-y-1.5 pt-2">
               <div className="flex items-center justify-between text-xs font-bold text-slate-700">
-                <span>Subiendo archivo al servidor...</span>
+                <span>Subiendo {uploadFiles.length} documento{uploadFiles.length > 1 ? 's' : ''} al servidor...</span>
                 <span className="font-mono text-brand-600">{uploadProgress}%</span>
               </div>
               <div className="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
@@ -1090,16 +1695,25 @@ export const ClienteDetailPage: React.FC = () => {
               type="button"
               variant="outline"
               disabled={isUploading}
-              onClick={() => setIsDocModalOpen(false)}
+              onClick={() => {
+                setIsDocModalOpen(false);
+                setUploadFiles([]);
+              }}
             >
               Cancelar
             </Button>
             <Button
               type="submit"
               variant="primary"
+              disabled={uploadFiles.length === 0}
               isLoading={isUploading}
+              leftIcon={<Upload className="w-4 h-4" />}
             >
-              {isUploading ? `Subiendo (${uploadProgress || 0}%)` : 'Subir Documento'}
+              {isUploading
+                ? `Subiendo (${uploadProgress || 0}%)`
+                : uploadFiles.length > 1
+                ? `Subir ${uploadFiles.length} Documentos`
+                : 'Subir Documento'}
             </Button>
           </div>
         </form>
@@ -1120,7 +1734,7 @@ export const ClienteDetailPage: React.FC = () => {
             </div>
           </div>
           <p className="text-xs text-slate-600">
-            El sistema ABAXIAL mantiene un historial inmutable. ¿Deseas almacenar este archivo como la <strong>versión v{(conflictDocInfo?.version || 1) + 1}</strong>?
+            El sistema Abaxial mantiene un historial inmutable. ¿Deseas almacenar este archivo como la <strong>versión v{(conflictDocInfo?.version || 1) + 1}</strong>?
           </p>
 
           {isUploading && uploadProgress !== null && (
@@ -1157,6 +1771,42 @@ export const ClienteDetailPage: React.FC = () => {
         </div>
       </Modal>
 
+      {/* Modal: Confirmar Eliminación de Documento */}
+      <Modal
+        isOpen={!!docToDelete}
+        onClose={() => !isDeletingDoc && setDocToDelete(null)}
+        title="Eliminar Documento"
+        size="sm"
+      >
+        <div className="space-y-4">
+          <div className="flex items-start gap-3 p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-900 text-xs">
+            <AlertCircle className="w-5 h-5 shrink-0 text-rose-600 mt-0.5" />
+            <div>
+              ¿Estás seguro de que deseas eliminar el documento <strong className="font-bold text-rose-950">{docToDelete?.name}</strong>?
+              Esta acción lo desactivará y ya no estará disponible en el sistema.
+            </div>
+          </div>
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+            <Button
+              variant="outline"
+              type="button"
+              onClick={() => setDocToDelete(null)}
+              disabled={isDeletingDoc}
+            >
+              Cancelar
+            </Button>
+            <Button
+              variant="danger"
+              onClick={handleConfirmDeleteDoc}
+              isLoading={isDeletingDoc}
+              leftIcon={<Trash2 className="w-4 h-4" />}
+            >
+              Eliminar Documento
+            </Button>
+          </div>
+        </div>
+      </Modal>
+
       {/* Modal: Añadir Contacto */}
       <Modal
         isOpen={isContactModalOpen}
@@ -1183,30 +1833,203 @@ export const ClienteDetailPage: React.FC = () => {
         isOpen={isEquipoModalOpen}
         onClose={() => setIsEquipoModalOpen(false)}
         title="Añadir Equipo al Inventario"
-        size="md"
+        size="lg"
       >
-        <form onSubmit={handleSaveEquipo} className="space-y-3">
-          <Select label="Tipo de Dispositivo" value={equipoForm.tipo} onChange={(e) => setEquipoForm({ ...equipoForm, tipo: e.target.value })}>
-            <option value="PC Sobremesa">PC Sobremesa</option>
-            <option value="Portátil">Portátil</option>
-            <option value="Servidor">Servidor</option>
-            <option value="Router / Switch">Router / Switch</option>
-            <option value="Impresora">Impresora</option>
-            <option value="SAI / UPS">SAI / UPS</option>
-            <option value="Otro">Otro</option>
-          </Select>
-          <Input label="Marca" value={equipoForm.marca || ''} onChange={(e) => setEquipoForm({ ...equipoForm, marca: e.target.value })} />
-          <Input label="Modelo" value={equipoForm.modelo || ''} onChange={(e) => setEquipoForm({ ...equipoForm, modelo: e.target.value })} />
-          <Input label="Número de Serie" value={equipoForm.numeroSerie || ''} onChange={(e) => setEquipoForm({ ...equipoForm, numeroSerie: e.target.value })} />
-          <Select label="Estado Operativo" value={equipoForm.estado || 'OPERATIVO'} onChange={(e) => setEquipoForm({ ...equipoForm, estado: e.target.value })}>
-            <option value="OPERATIVO">OPERATIVO</option>
-            <option value="EN_REPARACION">EN REPARACIÓN</option>
-            <option value="OBSOLETO">OBSOLETO</option>
-            <option value="BAJA">BAJA</option>
-          </Select>
+        <form onSubmit={handleSaveEquipo} className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Input
+              label="N/S / Código de Inventario"
+              placeholder="Ej. 43037-04 (opcional)"
+              value={equipoForm.codigoInventario || ''}
+              onChange={(e) => setEquipoForm({ ...equipoForm, codigoInventario: e.target.value })}
+            />
+            <Input
+              label="Nombre del Equipo (Hostname)"
+              placeholder="Ej. pc-recepcion"
+              value={equipoForm.nombreEquipo || ''}
+              onChange={(e) => setEquipoForm({ ...equipoForm, nombreEquipo: e.target.value })}
+            />
+            <Select
+              label="Tipo de Dispositivo *"
+              value={equipoForm.tipo}
+              onChange={(e) => setEquipoForm({ ...equipoForm, tipo: e.target.value })}
+            >
+              <option value="Portátil">Portátil</option>
+              <option value="Sobremesa">Sobremesa</option>
+              <option value="Servidor">Servidor</option>
+              <option value="Router / Switch">Router / Switch</option>
+              <option value="Impresora">Impresora</option>
+              <option value="SAI / UPS">SAI / UPS</option>
+              <option value="Otro">Otro</option>
+            </Select>
+            <Input
+              label="Ubicación"
+              placeholder="Ej. Despacho Susana, Oficina..."
+              value={equipoForm.ubicacion || ''}
+              onChange={(e) => setEquipoForm({ ...equipoForm, ubicacion: e.target.value })}
+            />
+            <Select
+              label="Estado"
+              value={equipoForm.estado || 'Alta'}
+              onChange={(e) => setEquipoForm({ ...equipoForm, estado: e.target.value })}
+            >
+              <option value="Alta">Alta</option>
+              <option value="Baja">Baja</option>
+              <option value="OPERATIVO">OPERATIVO</option>
+              <option value="EN_REPARACION">EN REPARACIÓN</option>
+              <option value="OBSOLETO">OBSOLETO</option>
+            </Select>
+            <Input
+              label="Última Revisión"
+              placeholder="Ej. 13/06/2014 10:45 o Sin acciones"
+              value={equipoForm.ultimaRevision || ''}
+              onChange={(e) => setEquipoForm({ ...equipoForm, ultimaRevision: e.target.value })}
+            />
+            <div className="sm:col-span-2">
+              <Input
+                label="URL Enlace de Soporte Abaxial"
+                placeholder="https://soporte.abaxial.es/pc_list.php?ref=..."
+                value={equipoForm.url || ''}
+                onChange={(e) => setEquipoForm({ ...equipoForm, url: e.target.value })}
+              />
+            </div>
+            <Input
+              label="Marca"
+              placeholder="Ej. HP, Lenovo, Dell..."
+              value={equipoForm.marca || ''}
+              onChange={(e) => setEquipoForm({ ...equipoForm, marca: e.target.value })}
+            />
+            <Input
+              label="Modelo"
+              placeholder="Ej. ProBook, ThinkPad..."
+              value={equipoForm.modelo || ''}
+              onChange={(e) => setEquipoForm({ ...equipoForm, modelo: e.target.value })}
+            />
+            <Input
+              label="Número de Serie Físico"
+              placeholder="Número de serie del fabricante"
+              value={equipoForm.numeroSerie || ''}
+              onChange={(e) => setEquipoForm({ ...equipoForm, numeroSerie: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+              Observaciones
+            </label>
+            <textarea
+              rows={2}
+              value={equipoForm.observaciones || ''}
+              onChange={(e) => setEquipoForm({ ...equipoForm, observaciones: e.target.value })}
+              placeholder="Notas técnicas adicionales..."
+              className="w-full px-3.5 py-2 text-xs font-normal rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white"
+            />
+          </div>
           <div className="flex justify-end gap-3 pt-4 border-t border-slate-100">
-            <Button variant="outline" type="button" onClick={() => setIsEquipoModalOpen(false)}>Cancelar</Button>
-            <Button variant="primary" type="submit">Guardar Equipo</Button>
+            <Button variant="outline" type="button" onClick={() => setIsEquipoModalOpen(false)}>
+              Cancelar
+            </Button>
+            <Button variant="primary" type="submit">
+              Guardar Equipo
+            </Button>
+          </div>
+        </form>
+      </Modal>
+
+      {/* Modal: Editar Equipo */}
+      <Modal
+        isOpen={isEditEquipoModalOpen}
+        onClose={() => setIsEditEquipoModalOpen(false)}
+        title={`Editar Equipo: ${editEquipoForm.nombreEquipo || editEquipoForm.codigoInventario || ''}`}
+        size="lg"
+      >
+        <form onSubmit={handleSaveEditEquipo} className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Input
+              label="N/S / Código de Inventario *"
+              required
+              value={editEquipoForm.codigoInventario || ''}
+              onChange={(e) => setEditEquipoForm({ ...editEquipoForm, codigoInventario: e.target.value })}
+            />
+            <Input
+              label="Nombre del Equipo (Hostname) *"
+              value={editEquipoForm.nombreEquipo || ''}
+              onChange={(e) => setEditEquipoForm({ ...editEquipoForm, nombreEquipo: e.target.value })}
+            />
+            <Select
+              label="Tipo de Dispositivo *"
+              value={editEquipoForm.tipo}
+              onChange={(e) => setEditEquipoForm({ ...editEquipoForm, tipo: e.target.value })}
+            >
+              <option value="Portátil">Portátil</option>
+              <option value="Sobremesa">Sobremesa</option>
+              <option value="Servidor">Servidor</option>
+              <option value="Router / Switch">Router / Switch</option>
+              <option value="Impresora">Impresora</option>
+              <option value="SAI / UPS">SAI / UPS</option>
+              <option value="Otro">Otro</option>
+            </Select>
+            <Input
+              label="Ubicación"
+              value={editEquipoForm.ubicacion || ''}
+              onChange={(e) => setEditEquipoForm({ ...editEquipoForm, ubicacion: e.target.value })}
+            />
+            <Select
+              label="Estado"
+              value={editEquipoForm.estado || 'Alta'}
+              onChange={(e) => setEditEquipoForm({ ...editEquipoForm, estado: e.target.value })}
+            >
+              <option value="Alta">Alta</option>
+              <option value="Baja">Baja</option>
+              <option value="OPERATIVO">OPERATIVO</option>
+              <option value="EN_REPARACION">EN REPARACIÓN</option>
+              <option value="OBSOLETO">OBSOLETO</option>
+            </Select>
+            <Input
+              label="Última Revisión"
+              value={editEquipoForm.ultimaRevision || ''}
+              onChange={(e) => setEditEquipoForm({ ...editEquipoForm, ultimaRevision: e.target.value })}
+            />
+            <div className="sm:col-span-2">
+              <Input
+                label="URL Enlace de Soporte Abaxial"
+                value={editEquipoForm.url || ''}
+                onChange={(e) => setEditEquipoForm({ ...editEquipoForm, url: e.target.value })}
+              />
+            </div>
+            <Input
+              label="Marca"
+              value={editEquipoForm.marca || ''}
+              onChange={(e) => setEditEquipoForm({ ...editEquipoForm, marca: e.target.value })}
+            />
+            <Input
+              label="Modelo"
+              value={editEquipoForm.modelo || ''}
+              onChange={(e) => setEditEquipoForm({ ...editEquipoForm, modelo: e.target.value })}
+            />
+            <Input
+              label="Número de Serie Físico"
+              value={editEquipoForm.numeroSerie || ''}
+              onChange={(e) => setEditEquipoForm({ ...editEquipoForm, numeroSerie: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
+              Observaciones
+            </label>
+            <textarea
+              rows={2}
+              value={editEquipoForm.observaciones || ''}
+              onChange={(e) => setEditEquipoForm({ ...editEquipoForm, observaciones: e.target.value })}
+              className="w-full px-3.5 py-2 text-xs font-normal rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white"
+            />
+          </div>
+          <div className="flex justify-end gap-3 pt-4 border-t border-slate-100">
+            <Button variant="outline" type="button" onClick={() => setIsEditEquipoModalOpen(false)}>
+              Cancelar
+            </Button>
+            <Button variant="primary" type="submit" isLoading={savingEquipo} leftIcon={<Save className="w-4 h-4" />}>
+              Guardar Cambios
+            </Button>
           </div>
         </form>
       </Modal>

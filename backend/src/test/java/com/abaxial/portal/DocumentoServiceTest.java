@@ -58,6 +58,7 @@ class DocumentoServiceTest {
 
         assertNotNull(docV1.getId());
         assertEquals("Contrato_Mantenimiento.pdf", docV1.getNombreOriginal());
+        assertEquals("GENERAL", docV1.getCategoria());
         assertEquals(1, docV1.getVersionActual());
         assertEquals(1, docV1.getVersiones().size());
 
@@ -81,5 +82,34 @@ class DocumentoServiceTest {
         assertEquals(2, docV2.getVersionActual());
         assertEquals(2, docV2.getVersiones().size());
         assertEquals(2, docV2.getUltimaVersion().getVersion());
+    }
+
+    @Test
+    void testSubirDocumentosMultiplesFuerzaEstadoGeneral() {
+        MockMultipartFile fileA = new MockMultipartFile(
+                "file",
+                "Factura_Septiembre.pdf",
+                "application/pdf",
+                "Factura A".getBytes()
+        );
+        MockMultipartFile fileB = new MockMultipartFile(
+                "file",
+                "Informe_Red.pdf",
+                "application/pdf",
+                "Informe B".getBytes()
+        );
+
+        java.util.List<DocumentoDTO> batch = documentoService.subirDocumentosMultiples(
+                clienteId,
+                "FACTURAS_O_CONTRATOS",
+                "Subida lote",
+                java.util.List.of(fileA, fileB),
+                "admin"
+        );
+
+        assertEquals(2, batch.size());
+        for (DocumentoDTO d : batch) {
+            assertEquals("GENERAL", d.getCategoria());
+        }
     }
 }

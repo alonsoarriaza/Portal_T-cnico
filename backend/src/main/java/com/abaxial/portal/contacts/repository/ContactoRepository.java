@@ -10,4 +10,6 @@ import java.util.List;
 public interface ContactoRepository extends JpaRepository<Contacto, Long> {
     List<Contacto> findByClienteIdAndActivoTrueOrderByNombreAsc(Long clienteId);
     List<Contacto> findByClienteIdOrderByNombreAsc(Long clienteId);
+    List<Contacto> findByClienteIdAndEmailIgnoreCase(Long clienteId, String email);
+    List<Contacto> findByClienteIdAndNombreIgnoreCase(Long clienteId, String nombre);
 }

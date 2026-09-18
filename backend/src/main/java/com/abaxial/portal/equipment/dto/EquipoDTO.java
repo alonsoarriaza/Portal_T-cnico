@@ -23,6 +23,10 @@ public class EquipoDTO {
     private String marca;
     private String modelo;
     private String numeroSerie;
+    private String nombreEquipo;
+    private String ubicacion;
+    private String ultimaRevision;
+    private String url;
     private String estado;
     private LocalDate fechaAlta;
     private LocalDate fechaBaja;
@@ -41,6 +45,10 @@ public class EquipoDTO {
                 .marca(e.getMarca())
                 .modelo(e.getModelo())
                 .numeroSerie(e.getNumeroSerie())
+                .nombreEquipo(e.getNombreEquipo())
+                .ubicacion(e.getUbicacion())
+                .ultimaRevision(e.getUltimaRevision())
+                .url(e.getUrl())
                 .estado(e.getEstado())
                 .fechaAlta(e.getFechaAlta())
                 .fechaBaja(e.getFechaBaja())

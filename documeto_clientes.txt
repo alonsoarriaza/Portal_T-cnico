@@ -1,0 +1,4876 @@
+﻿CEIP San Pedro Crisólogo 
+
+Contactos 
+Estado	 Alta
+Mantenimiento	Sí
+Dia mantenimiento	Primer Lunes del mes
+Técnico que realiza la visita	Manolo
+Número de visitas en el mes	1
+Equipos/dispositivos inventariados	0
+Webs registradas	0
+Código	43000007
+CIF/NIF	S4111001F
+Nombre completo	CEIP San Pedro Crisólogo
+Dirección	Villanubla 15
+Población	San Juan de Aznalfarache
+Provincia	Sevilla
+Email de gerente	41003871.edu@juntadeandalucia.es
+Teléfono de contacto	955624754
+Fecha alta	08/04/2008
+
+José Carlos Morales Martín 
+
+CONTACTO
+Estado	Alta
+Mantenimiento	Sí
+Dia mantenimiento	Primer Miércoles del mes
+Técnico que realiza la visita	Sandra
+Número de visitas en el mes	1
+Equipos/dispositivos inventariados	4
+Webs registradas	0
+Código	43000037
+CIF/NIF	28479487J
+Nombre completo	José Carlos Morales Martín
+Dirección	Núcleo Residencial Santísima Trinidad, 7 Local C
+Población	Sevilla
+Provincia	Sevilla
+Email de gerente	jcarlos@morales-abogados.com
+Teléfono de contacto	954987888
+Fecha alta	08/04/2008
+
+
+
+
+
+
+
+
+
+EQUIPOS
+
+
+43037-00
+siem-sglados
+Portátil
+Despacho Susana
+Alta
+13/06/2014 10:45
+
+
+43037-01
+recepcion
+Sobremesa
+Recepción
+Alta
+13/06/2014 12:30
+
+
+43037-02
+josecarlos-tosh
+Portátil
+Oficina
+Alta
+13/06/2014 12:10
+
+
+43037-03
+glados
+Portátil
+Despacho Susana
+Alta
+Sin acciones
+
+
+S. C. A. de Viviendas de los Agentes Comerciales 
+
+Estado	Alta
+Mantenimiento	Sí
+Dia mantenimiento	Segundo Viernes del mes
+Técnico que realiza la visita	Sandra
+Número de visitas en el mes	1
+Equipos/dispositivos inventariados	2
+Webs registradas	0
+Código	43000078
+CIF/NIF	F41015967
+Nombre completo	S. C. A. de Viviendas de los Agentes Comerciales
+Dirección	San Vicente de Paúl 8 F. Local 28
+Población	Sevilla
+Provincia	Sevilla
+Gerente	Manuel
+Email de gerente	coopve@telefonica.net
+Fecha alta	09/04/2008
+
+EQUIPOS:
+
+
+43078-00
+pcmanolo
+Sobremesa
+Oficinas
+Alta
+Sin acciones
+
+
+43078-01
+pcjorge
+Sobremesa
+Oficinas
+Alta
+Sin acciones
+
+
+
+
+
+
+
+
+Real Betis Baloncesto S.A.D. 
+
+Cliente	
+Estado	Alta
+Mantenimiento	Sí
+Técnico que realiza la visita	Manolo
+Número de visitas en el mes	Pa
+Equipos/dispositivos inventariados	26
+Webs registradas	3
+Código	43000147
+CIF/NIF	A41395005
+Nombre completo	Real Betis Baloncesto S.A.D.
+Razón social	Coosur Betis
+Dirección	Doctor Laffon Soto S/N
+Población	Sevilla
+Provincia	Sevilla
+Gerente	Miguel Ángel Jiménez
+Email de gerente	majimenez@realbetisbaloncesto.com
+Email persona TIC	lquintero@realbetisbalompie.com
+Teléfono de contacto	954997779
+Fecha alta	10/04/2008
+
+EQUIPOS:
+
+
+43147-00
+servidor
+Servidor
+Sala junto almacen
+Baja
+30/10/2015 09:40
+  
+43147-01
+comunicacion2
+Sobremesa
+Comunicacion
+Alta
+Sin acciones
+  
+43147-02
+comunicacion1
+Sobremesa
+Comunicacion
+Alta
+Sin acciones
+  
+43147-03
+técnicos
+Portátil
+-
+Alta
+05/03/2014 12:00
+  
+43147-04
+recepcionrocio
+Sobremesa
+Recepcion
+Alta
+Sin acciones
+  
+43147-05
+susana
+Sobremesa
+Recepciones externas
+Alta
+Sin acciones
+  
+43147-06
+escaner-pc
+Sobremesa
+Contabilidad
+Alta
+Sin acciones
+  
+43147-07
+sito
+Sobremesa
+Contabilidad
+Alta
+Sin acciones
+  
+43147-08
+contabilidad
+Sobremesa
+Contabilidad
+Alta
+Sin acciones
+  
+43147-09
+instituciones
+Sobremesa
+Raúl Pérez
+Alta
+Sin acciones
+  
+43147-10
+entrenador
+Portátil
+Despacho Rocky
+Alta
+Sin acciones
+  
+43147-11
+entrenador
+Portátil
+Técnicos
+Alta
+Sin acciones
+  
+43147-12
+merchandising
+Sobremesa
+Cantera
+Alta
+Sin acciones
+  
+43147-13
+pedro
+Sobremesa
+Relaciones institucionales
+Alta
+Sin acciones
+  
+43147-14
+benitodoblado
+Sobremesa
+Relaciones Institucionales
+Baja
+Sin acciones
+  
+43147-15
+rocky
+Sobremesa
+Despacho Rocky
+Baja
+Sin acciones
+  
+43147-16
+srvvccaa
+Portátil
+Taquilla
+Baja
+Sin acciones
+  
+43147-17
+taquilla4
+Sobremesa
+Taquilla
+Baja
+Sin acciones
+  
+43147-18
+taquilla3
+Sobremesa
+Taquilla
+Alta
+Sin acciones
+  
+43147-19
+taquilla2
+Sobremesa
+Taquilla
+Alta
+Sin acciones
+  
+43147-20
+taquilla1
+Sobremesa
+Taquilla
+Alta
+Sin acciones
+  
+43147-21
+tienda-589eaa8c
+Sobremesa
+Tienda centro ciudad
+Alta
+Sin acciones
+  
+43147-22
+user-pc
+Sobremesa
+Pabellón
+Alta
+Sin acciones
+  
+43147-23
+medico
+Sobremesa
+-
+Alta
+Sin acciones
+  
+43147-24
+naismith
+Servidor
+Despacho servidor
+Alta
+19/10/2016 09:15
+  
+43147-25
+benitodoblado
+Sobremesa
+Cantera
+Alta
+Sin acciones
+  
+
+
+
+
+
+
+
+
+Colegio Virgen Milagrosa 
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Primer Miércoles del mes
+Técnico que realiza la visita
+Manolo
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+8
+Webs registradas
+0
+Código
+43000175
+CIF/NIF
+R4100089D
+Nombre completo
+Colegio Virgen Milagrosa
+Dirección
+Avda. de Pino Montano 21 A
+Población
+Sevilla
+Provincia
+Sevilla
+Email de gerente
+conforma@hijascaridad.es
+Email persona TIC
+vmilagrosa@planalfa.es
+Teléfono de contacto
+954355020
+Fecha alta
+10/04/2008
+
+
+EQUIPOS
+
+43175-00
+titularidad
+Sobremesa
+Adm. Titularidad
+Alta
+Sin acciones
+  
+43175-01
+dsecundaria
+Sobremesa
+Dirección 1
+Alta
+Sin acciones
+  
+43175-02
+administracion
+Sobremesa
+Administración
+Alta
+Sin acciones
+  
+43175-03
+direccion2
+Sobremesa
+Direcccion2
+Alta
+Sin acciones
+  
+43175-04
+secretaria
+Sobremesa
+Secretaria
+Alta
+Sin acciones
+  
+43175-05
+3228031cef144bf
+Sobremesa
+P1 - Tutoria-4
+Alta
+Sin acciones
+  
+43175-06
+colegio-cbd5b51
+Sobremesa
+Orientación
+Alta
+Sin acciones
+  
+43175-07
+usuario-pc
+Sobremesa
+P1 - Sala de Profesores
+Alta
+Sin acciones
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Clínica Dental Azuanlu S.L. 
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Primer Viernes del mes
+Técnico que realiza la visita
+Manolo
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+7
+Webs registradas
+0
+Código
+43000227
+CIF/NIF
+B91408542
+Nombre completo
+Clínica Dental Azuanlu S.L.
+Dirección
+Rubén Darío nº 24 - Bajo
+Población
+Utrera
+Provincia
+Sevilla
+Email de gerente
+clinicazuanlu@gmail.com
+Teléfono de contacto
+955860813
+Fecha alta
+11/04/2008
+
+
+
+
+
+43227-00
+recepción2
+Sobremesa
+Mostrador Recepción
+Alta
+Sin acciones
+  
+43227-01
+recepción
+Sobremesa
+Mostrador entrada
+Alta
+Sin acciones
+  
+43227-02
+consulta1
+Sobremesa
+Consulta 1
+Alta
+Sin acciones
+  
+43227-03
+consulta2
+Sobremesa
+Consulta 2
+Alta
+Sin acciones
+  
+43227-04
+consulta3
+Sobremesa
+Consulta 3
+Alta
+Sin acciones
+  
+43227-05
+consulta4
+Sobremesa
+Consulta 4
+Alta
+Sin acciones
+  
+43227-06
+radiología
+Portátil
+Sala de Rayos
+Alta
+Sin acciones
+  
+
+
+CEIP José María del Campo 
+
+
+
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Segundo Jueves del mes
+Técnico que realiza la visita
+Manuel González
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43000300
+CIF/NIF
+S4111001F
+Nombre completo
+CEIP José María del Campo
+Dirección
+Pagés del Corro 115
+Población
+Sevilla
+Provincia
+Sevilla
+Gerente
+María Ángeles Caravaca
+Email de gerente
+41004265.edu@juntadeandalucia.es
+Persona TIC
+Manuel Cáceres
+Email persona TIC
+manuel.caceres.edu@gmail.com
+Teléfono de contacto
+955622815
+Fecha alta
+24/10/2008
+
+
+
+Equipos:
+
+Religiosas de María Inmaculada (CES) 
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+1º y 3º Lunes
+Número de visitas en el mes
+2
+Equipos/dispositivos inventariados
+72
+Webs registradas
+0
+Código
+43000457
+CIF/NIF
+R4100198C
+Nombre completo
+Religiosas de María Inmaculada (CES)
+Dirección
+Jesús de la Veracruz, 10
+Población
+Sevilla
+Provincia
+Sevilla
+Gerente
+Hermana Marisa
+Email de gerente
+ecosevillarmi@gmail.com
+Persona TIC
+David
+Email persona TIC
+dguerrero@gmail.com
+Teléfono de contacto
+616794939 (Hermana Marisa)
+Fecha alta
+30-10-23
+
+
+Equipos:
+
+
+43457-00
+dirección
+Sobremesa
+Pasillo sala de profesores
+Baja
+Sin acciones
+  
+43457-01
+centro social
+Sobremesa
+Acción Social
+Baja
+Sin acciones
+  
+43457-02
+pcseeso005
+Sobremesa
+Aula informática P1
+Baja
+Sin acciones
+  
+43457-03
+p003
+Sobremesa
+Aula informática P1
+Baja
+Sin acciones
+  
+43457-04
+p002
+Sobremesa
+Aula informática P1
+Baja
+Sin acciones
+  
+43457-05
+p001
+Sobremesa
+Aula informática P1
+Baja
+Sin acciones
+  
+43457-06
+p013
+Sobremesa
+Aula informática P1
+Baja
+Sin acciones
+  
+43457-07
+p014
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-08
+p015
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-09
+p006
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-10
+p005
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-11
+p004
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-12
+p016
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-13
+p017
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-14
+p018
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-15
+p009
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-16
+p008
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-17
+p007
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-18
+p019
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-19
+p020
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-20
+p021
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-21
+p012
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-22
+p011
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-23
+p010
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-24
+p022
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-25
+p023
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-26
+p024
+Sobremesa
+Aula Informática P1
+Baja
+Sin acciones
+  
+43457-27
+pcse104
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-28
+pcse105
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-29
+pcse106
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-30
+pcse116
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-31
+pcse117
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-32
+pcse118
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-33
+pcse107
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-34
+pcse108
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-35
+pcse109
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-36
+pcse119
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-37
+pcse120
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-38
+pcse121
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-39
+pcse110
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-40
+pcse111
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-41
+pcse112
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-42
+pcse122
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-43
+pcse123
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-44
+pcse124
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-45
+pcse113
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-46
+pcse114
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-47
+pcse115
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-48
+pcse125
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-49
+pcse126
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-50
+pcse127
+Sobremesa
+Aula Informática P2
+Baja
+Sin acciones
+  
+43457-51
+equipo1
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-52
+equipo2
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-53
+equipo3
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-54
+equipo4
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-55
+equipo5
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-56
+equipo6
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-57
+equipo7
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-58
+equipo8
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-59
+equipo9
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-60
+equipo10
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-61
+equipo11
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-62
+equipo12
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-63
+equipo13
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-64
+equipo14
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-65
+equipo15
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-66
+equipo16
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-67
+equipo17
+Sobremesa
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-68
+equipo18
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-69
+equipo19
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-70
+equipo20
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+43457-71
+equipo21
+Portátil
+Aula Informática P3
+Baja
+Sin acciones
+  
+
+
+
+Círculo Mercantil e Industrial de Sevilla
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Primer Martes del mes
+Técnico que realiza la visita
+Sandra
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+33
+Webs registradas
+0
+Código
+43000527
+CIF/NIF
+G41032863
+Nombre completo
+Círculo Mercantil e Industrial de Sevilla
+Razón social
+Círculo Mercantil e Industrial de Sevilla
+Dirección
+Sierpes 65
+Población
+Sevilla
+Provincia
+Sevilla
+Email de gerente
+direccion@circulomercantilsevilla.com
+Teléfono de contacto
+954222980
+Fecha alta
+04/01/2011
+
+
+Equipos:
+
+
+43527-00
+seneca
+Servidor
+Administración
+Alta
+17/10/2016 10:00
+  
+43527-01
+mostrador-pc
+Sobremesa
+Administración
+Alta
+Sin acciones
+  
+43527-02
+epson perfection v33
+Otros
+Instalaciones - Oficinas
+Alta
+Sin acciones
+  
+43527-03
+sierpes2
+Sobremesa
+Administración
+Alta
+Sin acciones
+  
+43527-04
+sierpes3
+Sobremesa
+Administración
+Alta
+03/06/2014 11:00
+  
+43527-05
+sierpes4old
+Sobremesa
+Administración
+Baja
+Sin acciones
+  
+43527-06
+sierpes5old
+Sobremesa
+Administración
+Baja
+03/06/2014 10:30
+  
+43527-07
+sierpes6
+Sobremesa
+Despacho Pilar Picchi
+Baja
+14/05/2014 09:20
+  
+43527-08
+sierpes7
+Sobremesa
+Actividades culturales
+Alta
+Sin acciones
+  
+43527-09
+usuario-pc
+Sobremesa
+Despacho José Gutierrez
+Alta
+Sin acciones
+  
+43527-10
+conserjeria
+Sobremesa
+Sierpes recepción
+Alta
+Sin acciones
+  
+43527-11
+sierpes7
+Sobremesa
+-
+Baja
+07/01/2014 14:00
+  
+43527-12
+sierpes6
+Sobremesa
+Actividades Culturales
+Alta
+Sin acciones
+  
+43527-13
+sierpes4
+Sobremesa
+Administración
+Alta
+12/09/2014 12:00
+  
+43527-14
+sierpes5
+Sobremesa
+Administración
+Alta
+15/09/2014 14:00
+  
+43527-15
+instalaciones15
+Sobremesa
+Instalaciones - Oficinas
+Alta
+Sin acciones
+  
+43527-16
+controlaccesos
+Sobremesa
+Entrada Instalaciones
+Alta
+Sin acciones
+  
+43527-17
+gimnasio
+Sobremesa
+Instalaciones
+Baja
+Sin acciones
+  
+43527-18
+instalaciones7
+Sobremesa
+Instalaciones - Oficinas
+Alta
+Sin acciones
+  
+43527-19
+instalaciones6
+Sobremesa
+Instalaciones - Oficinas
+Alta
+Sin acciones
+  
+43527-20
+instalaciones18
+Sobremesa
+Instalaciones - Deportes
+Baja
+Sin acciones
+  
+43527-21
+instalaciones4
+Sobremesa
+Instalaciones - Deportes
+Baja
+Sin acciones
+  
+43527-22
+instalaciones8
+Sobremesa
+Instalaciones - Oficinas
+Alta
+Sin acciones
+  
+43527-23
+instalaciones21
+Sobremesa
+Instalaciones - Oficinas
+Alta
+Sin acciones
+  
+43527-24
+instalaciones9
+Sobremesa
+Instalaciones - Oficinas
+Alta
+Sin acciones
+  
+43527-25
+remo
+Sobremesa
+Remo
+Alta
+Sin acciones
+  
+43527-26
+instalaciones16
+Sobremesa
+Instalaciones - Oficinas
+Alta
+Sin acciones
+  
+43527-27
+instalaciones17
+Sobremesa
+Instalaciones - Oficinas
+Alta
+Sin acciones
+  
+43527-28
+instalaciones20
+Sobremesa
+Instalaciones - Oficinas
+Baja
+Sin acciones
+  
+43527-29
+fargo dtc1250e
+Impresoras
+Instalaciones - Deportes
+Alta
+Sin acciones
+  
+43527-30
+hp scanjet 300
+Otros
+Instalaciones - Deportes
+Alta
+Sin acciones
+  
+43527-31
+fargo dtc1250e
+Impresoras
+Instalaciones - Deportes
+Alta
+Sin acciones
+  
+43527-32
+hp scanjet 300
+Otros
+Instalaciones - Deportes
+Alta
+Sin acciones
+  
+
+
+
+
+Polygroupe Europe S. L.
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Primer Martes del mes
+Técnico que realiza la visita
+Manolo
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+18
+Webs registradas
+0
+Código
+43000716
+CIF/NIF
+B91813543
+Nombre completo
+Polygroupe Europe S. L.
+Razón social
+Polygroupe Europe S.L.
+Dirección
+Pol. Ind. Navisur . Narciso 5-6
+Población
+Valencina de la Concepcion
+Provincia
+Sevilla
+Email de gerente
+fgallardo@afpolygroup.com
+Teléfono de contacto
+955997731
+Fecha alta
+15/07/2013
+
+
+
+43716-00
+server
+Servidor
+Fábrica
+Baja
+Sin acciones
+  
+43716-01
+polygroupbkp
+Servidor
+Fábrica
+Baja
+Sin acciones
+  
+43716-02
+ofi-2
+Sobremesa
+Oficina
+Alta
+Sin acciones
+  
+43716-03
+ofi-1
+Sobremesa
+Oficina
+Alta
+Sin acciones
+  
+43716-04
+ofi-5
+Sobremesa
+Oficina
+Alta
+Sin acciones
+  
+43716-05
+fab-1
+Sobremesa
+Fábrica
+Alta
+02/07/2014 13:50
+  
+43716-06
+ofi-3
+Sobremesa
+Oficina
+Alta
+Sin acciones
+  
+43716-07
+tosh-jlsancho
+Portátil
+Oficina
+Alta
+02/07/2014 15:30
+  
+43716-08
+ofi-4
+Sobremesa
+Oficina
+Alta
+01/07/2014 14:45
+  
+43716-09
+tosh-01
+Portátil
+Despacho Francisco Rasero
+Alta
+Sin acciones
+  
+43716-10
+rrhh-1
+Sobremesa
+Despacho Fernando Gallardo
+Alta
+Sin acciones
+  
+43716-11
+toshiba
+Portátil
+Despacho José Luis (Padre)
+Baja
+Sin acciones
+  
+43716-12
+tosh-02
+Portátil
+Fábrica
+Baja
+Sin acciones
+  
+43716-13
+averroes
+Servidor
+Fábrica
+Alta
+17/10/2016 09:45
+  
+43716-14
+vaio-jasancho
+Portátil
+Despacho Alberto
+Alta
+02/07/2014 15:15
+  
+43716-15
+sec0015994a3885
+Impresoras
+Oficina
+Baja
+Sin acciones
+  
+43716-16
+ofi-6
+Sobremesa
+Oficina
+Alta
+Sin acciones
+  
+43716-17
+konica minolta mfp
+Impresoras
+-
+Alta
+Sin acciones
+  
+
+
+
+CEIP Rico Cejudo
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Segundo Martes del mes
+Técnico que realiza la visita
+Sandra
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+18
+Webs registradas
+0
+Código
+43000746
+CIF/NIF
+S4111001F
+Nombre completo
+CEIP Rico Cejudo
+Dirección
+Coruña 1
+Población
+Sevilla
+Provincia
+Sevilla
+Gerente
+Charo
+Email de gerente
+41009408.edu@juntadeandalucia.es
+Persona TIC
+Estrella
+Teléfono de contacto
+955623475 - 639725369
+Fecha alta
+30/10/2013
+
+Equipos:
+
+43746-00
+4primaria
+Sobremesa
+4ºA Primaria
+Alta
+Sin acciones
+  
+43746-01
+3primaria
+Sobremesa
+3º Primaria
+Alta
+Sin acciones
+  
+43746-02
+2primaria
+Sobremesa
+2º Primaria
+Alta
+Sin acciones
+  
+43746-03
+direccion
+Sobremesa
+Administración
+Alta
+Sin acciones
+  
+43746-04
+jefedeestudios
+Sobremesa
+Administración
+Alta
+Sin acciones
+  
+43746-05
+secretaria
+Sobremesa
+Administracion
+Alta
+Sin acciones
+  
+43746-06
+pedagogia
+Sobremesa
+Pedagogia
+Alta
+Sin acciones
+  
+43746-07
+4bprimaria
+Sobremesa
+4ºB Primaria
+Alta
+Sin acciones
+  
+43746-08
+5bprimaria
+Sobremesa
+5ºB Primaria
+Alta
+Sin acciones
+  
+43746-09
+6aprimaria
+Sobremesa
+6ºA Primaria
+Alta
+Sin acciones
+  
+43746-10
+5aprimaria
+Sobremesa
+5ºA Primaria
+Alta
+Sin acciones
+  
+43746-11
+1primaria
+Sobremesa
+1º Primaria
+Alta
+Sin acciones
+  
+43746-12
+biblioteca
+Sobremesa
+Biblioteca
+Alta
+Sin acciones
+  
+43746-13
+infantil5anos
+Sobremesa
+Infantil 5 años
+Alta
+Sin acciones
+  
+43746-14
+infantil3anos
+Sobremesa
+Infantil 3 años
+Alta
+Sin acciones
+  
+43746-15
+infantil4anos
+Sobremesa
+Infantil 4 años
+Alta
+Sin acciones
+  
+43746-16
+sala-profes
+Sobremesa
+Sala Profesores
+Alta
+Sin acciones
+  
+43746-17
+ceja-agd6gjxtop
+Sobremesa
+Sala Profesores
+Alta
+Sin acciones
+  
+
+
+Religiosas de María Inmaculada (R)
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+1º Lunes
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43000780
+CIF/NIF
+R4100199A
+Nombre completo
+Religiosas de María Inmaculada (R)
+Dirección
+Jesús de la Veracruz, 10
+Población
+Sevilla
+Provincia
+Sevilla
+Gerente
+Mª Ángeles
+Email de gerente
+mangelesrmi@yahoo.es
+Teléfono de contacto
+648606874 (MªAngeles)
+Fecha alta
+30-10-23
+
+
+Equipos:
+
+
+
+CEIP San Jacinto
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Segundo Lunes del mes
+Técnico que realiza la visita
+Sandra
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+7
+Webs registradas
+0
+Código
+43000784
+CIF/NIF
+S4111001F
+Nombre completo
+CEIP San Jacinto
+Dirección
+C/ Pagés del Corro, 88
+Población
+Sevilla
+Provincia
+Sevilla
+Gerente
+Mónica Poyato
+Email de gerente
+41004289.edu@juntadeandalucia.es
+Persona TIC
+Cristina
+Email persona TIC
+bongopizco@hotmail.com
+Teléfono de contacto
+955623513
+Fecha alta
+10/02/2014
+
+
+Equipos:
+
+43784-00
+director-pc
+Sobremesa
+Dirección
+Alta
+06/08/2014 10:20
+  
+43784-01
+pc11
+Sobremesa
+Jefe de Estudios
+Alta
+Sin acciones
+  
+43784-02
+secretaria
+Sobremesa
+Secretaria
+Alta
+Sin acciones
+  
+43784-03
+monitora
+Sobremesa
+Secretaria
+Alta
+Sin acciones
+  
+43784-04
+salaprofesores1
+Sobremesa
+Sala de profesores
+Alta
+Sin acciones
+  
+43784-05
+pc248-9
+Sobremesa
+Sala de profesores
+Alta
+Sin acciones
+  
+43784-XX
+toshiba estudio 4520
+Impresoras
+Secretaria
+Alta
+Sin acciones
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Grupo Educativo Delta S. A.
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Segundo Miércoles del mes
+Técnico que realiza la visita
+Manolo
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+19
+Webs registradas
+0
+Código
+43000785
+CIF/NIF
+A85723005
+Nombre completo
+Grupo Educativo Delta S. A.
+Razón social
+CDP Compañía de María
+Dirección
+General Moscardó 24
+Población
+Sevilla
+Provincia
+Sevilla
+Email de gerente
+nar@companiademariasevilla.com
+Teléfono de contacto
+954231905
+Fecha alta
+07/03/2014
+
+
+Equipos:
+
+
+43790-00
+server
+Servidor
+Aula junto a despacho director - P1
+Alta
+20/10/2016 09:50
+  
+43790-01
+administracion
+Sobremesa
+Secretaría y Administración - P1
+Alta
+05/05/2014 11:30
+  
+43790-02
+secretaria1
+Sobremesa
+Secretaría - Administración P1
+Baja
+Sin acciones
+  
+43790-03
+secretaría
+Sobremesa
+Dirección y Secretaría - P1
+Alta
+Sin acciones
+  
+43790-04
+dirección1
+Sobremesa
+Dirección P1
+Alta
+24/04/2014 15:20
+  
+43790-05
+saladepreofesor
+Sobremesa
+Sala de Profesores - P1
+Alta
+Sin acciones
+  
+43790-06
+salaprofesores2
+Sobremesa
+Sala de profesores - P1
+Alta
+Sin acciones
+  
+43790-07
+salaprofesores3
+Sobremesa
+Sala de Profesores - P1
+Alta
+Sin acciones
+  
+43790-08
+usuario-pc
+Sobremesa
+Jefatura Estudio - P1
+Alta
+Sin acciones
+  
+43790-09
+jefe-estudios-p
+Sobremesa
+Sala de profesores - P2
+Alta
+Sin acciones
+  
+43790-11
+rafael
+Sobremesa
+Orientación - P3
+Alta
+Sin acciones
+  
+43790-12
+recepcion
+Sobremesa
+Recepción
+Baja
+Sin acciones
+  
+43790-14
+usuario-pc
+Sobremesa
+Dirección PB
+Alta
+24/04/2014 15:15
+  
+43790-15
+salaprofesoresp
+Sobremesa
+Sala de profesores - PB
+Alta
+Sin acciones
+  
+43790-16
+user-pc
+Sobremesa
+Jefatura Estudios - P2
+Alta
+24/04/2014 15:25
+  
+43790-17
+brother dcp-j725dw
+Impresoras
+Jefatura de Estudios - P2
+Alta
+Sin acciones
+  
+43790-18
+compaqgerente
+Portátil
+Despacho Nieves - P1
+Alta
+Sin acciones
+  
+43790-19
+secretaria1
+Sobremesa
+Secretaria P1
+Alta
+Sin acciones
+  
+43790-20
+recepcion
+Sobremesa
+Recepcion PB
+Alta
+Sin acciones
+  
+
+
+
+
+
+CEIP Josefa Navarro Zamora
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Primer Miércoles y tercer Viernes del mes
+Técnico que realiza la visita
+Manolo
+Número de visitas en el mes
+2
+Equipos/dispositivos inventariados
+14
+Webs registradas
+0
+Código
+43000883
+CIF/NIF
+S4111001F
+Nombre completo
+CEIP Josefa Navarro Zamora
+Razón social
+CEIP Josefa Navarro Zamora
+Dirección
+C/ de la Maestra Josefa Navarro Zamora s/n
+Población
+Coria del Río
+Provincia
+Sevilla
+Gerente
+Ezequiel
+Email de gerente
+josefanavarrozamora@gmail.com
+Persona TIC
+Manuel Franco Y Eloy
+Teléfono de contacto
+955623894
+Fecha alta
+20/12/2014
+
+
+
+Equipos:
+
+
+43883-00
+secretaria
+Sobremesa
+Secretaria
+Alta
+Sin acciones
+  
+43883-01
+brother hl2130
+Impresoras
+Secretaria
+Alta
+Sin acciones
+  
+43883-02
+salareuniones-01
+Sobremesa
+Sala reuniones 38
+Alta
+Sin acciones
+  
+43883-03
+salareuniones-02
+Sobremesa
+Sala reuniones 38
+Alta
+Sin acciones
+  
+43883-04
+hp larserjet p2055dn
+Impresoras
+Sala reuniones 38
+Alta
+Sin acciones
+  
+43883-05
+epson 1670
+Otros
+Sala reuniones 38
+Alta
+Sin acciones
+  
+43883-06
+biblioteca
+Sobremesa
+Biblioteca
+Alta
+Sin acciones
+  
+43883-07
+samsung ml-1665
+Impresoras
+Biblioteca
+Alta
+Sin acciones
+  
+43883-08
+nas-intranet
+Redes
+-
+Alta
+Sin acciones
+  
+43883-09
+jefatura-estudio
+Sobremesa
+Jefatura de Estudio
+Alta
+Sin acciones
+  
+43883-10
+hp laserjet cp1215
+Impresoras
+Jefatura de Estudio
+Alta
+Sin acciones
+  
+43883-11
+directora
+Sobremesa
+Despacho directora
+Alta
+Sin acciones
+  
+43883-12
+brother hl2130
+Impresoras
+Despacho directora
+Alta
+Sin acciones
+  
+43883-13
+secretario
+Sobremesa
+Secretaria
+Alta
+Sin acciones
+  
+
+
+
+
+
+
+
+
+
+
+
+Fundación Spínola (SE)
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Primer Viernes del mes
+Técnico que realiza la visita
+Manolo
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+101
+Webs registradas
+0
+Código
+43000884
+CIF/NIF
+G86992807
+Nombre completo
+Fundación Spínola (SE)
+Razón social
+CDP Sagrado Corazón. Sevilla
+Dirección
+Jesús de la Veracruz 18
+Población
+Sevilla
+Provincia
+Sevilla
+Email de gerente
+administracion@sagradocorazonsevilla.es
+Email persona TIC
+administracion@sagradocorazonsevilla.es
+Teléfono de contacto
+954220993
+Fecha alta
+17/09/2010
+
+
+Equipos:
+
+
+43499-00
+aristoteles
+Servidor
+Administración Secundaria
+Alta
+20/10/2016 09:35
+  
+43499-01
+colegio-04b101f
+Sobremesa
+Secretaría
+Alta
+Sin acciones
+  
+43499-02
+secretaria1
+Sobremesa
+Secretaría
+Baja
+Sin acciones
+  
+43499-03
+dtitular
+Sobremesa
+Dirección
+Alta
+Sin acciones
+  
+43499-04
+admincentro
+Sobremesa
+Administración Secundaria
+Alta
+Sin acciones
+  
+43499-05
+administracion1
+Sobremesa
+Administración
+Alta
+Sin acciones
+  
+43499-06
+recepcionp
+Sobremesa
+Recepción
+Alta
+Sin acciones
+  
+43499-07
+antonio-pc
+Portátil
+Administración
+Alta
+Sin acciones
+  
+43499-08
+salaprofsec3
+Sobremesa
+Sala Profesores
+Alta
+Sin acciones
+  
+43499-09
+salaprofsec2
+Sobremesa
+Sala Profesores
+Alta
+Sin acciones
+  
+43499-10
+salaprof01
+Sobremesa
+Sala Profesores
+Alta
+Sin acciones
+  
+43499-100
+salaprof04
+Sobremesa
+Sala Profesores
+Alta
+Sin acciones
+  
+43499-11
+inf1b
+Sobremesa
+Infantil Primaria 1ºB
+Alta
+Sin acciones
+  
+43499-12
+inf1a
+Sobremesa
+Infantil Primaria 1ºA
+Alta
+Sin acciones
+  
+43499-13
+inf2b
+Sobremesa
+Infantil Primaria 2ºB
+Alta
+Sin acciones
+  
+43499-14
+primaria1a
+Sobremesa
+1ºA Primaria
+Alta
+Sin acciones
+  
+43499-15
+primaria1b
+Sobremesa
+1ºB Primaria
+Alta
+Sin acciones
+  
+43499-16
+primaria1c
+Sobremesa
+1ºC Primaria
+Alta
+Sin acciones
+  
+43499-17
+inf3a
+Sobremesa
+Infantil Primaria 3ºA
+Alta
+Sin acciones
+  
+43499-18
+inf3b
+Sobremesa
+Infantil Primaria 3ºB
+Alta
+Sin acciones
+  
+43499-19
+inf2a
+Sobremesa
+Infantil Primaria 2ºA
+Alta
+Sin acciones
+  
+43499-20
+primaria6a
+Sobremesa
+6ºA Primaria
+Alta
+Sin acciones
+  
+43499-21
+primaria5a
+Sobremesa
+5ºA Primaria
+Alta
+Sin acciones
+  
+43499-22
+primaria5b
+Sobremesa
+5ºB Primaria
+Alta
+Sin acciones
+  
+43499-23
+primaria5c
+Sobremesa
+5ºC Primaria
+Alta
+Sin acciones
+  
+43499-24
+primaria4a
+Sobremesa
+4ºA Primaria
+Alta
+Sin acciones
+  
+43499-25
+colegio-pc
+Sobremesa
+4ºB Primaria
+Alta
+Sin acciones
+  
+43499-26
+primaria6c
+Sobremesa
+6ºC Primaria
+Alta
+Sin acciones
+  
+43499-27
+jefsec
+Sobremesa
+Jefe Estudios Secundaria
+Alta
+Sin acciones
+  
+43499-28
+4esoa
+Sobremesa
+2º A ESO
+Alta
+Sin acciones
+  
+43499-29
+jefestpri
+Sobremesa
+Jefe Estudios Primaria
+Alta
+Sin acciones
+  
+43499-30
+orientacionsec
+Sobremesa
+Orientación Secundaria
+Alta
+Sin acciones
+  
+43499-31
+4esob
+Sobremesa
+2ºB ESO
+Alta
+Sin acciones
+  
+43499-32
+4esoc
+Sobremesa
+2ºC ESO
+Alta
+Sin acciones
+  
+43499-33
+3esoc
+Sobremesa
+3ºC ESO
+Alta
+Sin acciones
+  
+43499-34
+3esob
+Sobremesa
+3ºB ESO
+Alta
+Sin acciones
+  
+43499-35
+3esoa
+Sobremesa
+3ºA ESO
+Alta
+Sin acciones
+  
+43499-36
+2esoc
+Sobremesa
+4ºC ESO
+Alta
+Sin acciones
+  
+43499-37
+2esob
+Sobremesa
+4ºB ESO
+Alta
+Sin acciones
+  
+43499-38
+passecbac
+Sobremesa
+Pastoral Secundaria
+Alta
+Sin acciones
+  
+43499-39
+1bachc
+Sobremesa
+1ºB Bachillerato
+Alta
+Sin acciones
+  
+43499-40
+2bacha
+Sobremesa
+2ºA Bachillerato
+Alta
+Sin acciones
+  
+43499-41
+dpto-desdoble
+Otros
+Desdoble
+Alta
+Sin acciones
+  
+43499-42
+primaria3a
+Sobremesa
+3ºA Primaria
+Alta
+Sin acciones
+  
+43499-43
+primaria3b
+Sobremesa
+3ºB Primaria
+Alta
+Sin acciones
+  
+43499-44
+primaria3c
+Sobremesa
+3ºC Primaria
+Alta
+Sin acciones
+  
+43499-45
+primaria2a
+Sobremesa
+2ºA Primaria
+Alta
+Sin acciones
+  
+43499-46
+primaria2b
+Sobremesa
+2ºB Primaria
+Alta
+Sin acciones
+  
+43499-47
+primaria2c
+Sobremesa
+2ºC Primaria
+Alta
+Sin acciones
+  
+43499-48
+primaria4c
+Sobremesa
+4ºC Primaria
+Alta
+Sin acciones
+  
+43499-49
+dpto-salon
+Otros
+-
+Alta
+Sin acciones
+  
+43499-50
+1esoa
+Sobremesa
+1ºA ESO
+Alta
+Sin acciones
+  
+43499-51
+1esob
+Sobremesa
+1ºB ESO
+Alta
+Sin acciones
+  
+43499-52
+1esoc
+Sobremesa
+1ºC ESO
+Alta
+Sin acciones
+  
+43499-53
+jefbachiller
+Sobremesa
+Jefatura Estudios Bachillerato
+Alta
+Sin acciones
+  
+43499-54
+1bacha
+Sobremesa
+1ºA Bachillerato
+Alta
+Sin acciones
+  
+43499-55
+2bachc
+Sobremesa
+2ºB Bachillerato
+Alta
+Sin acciones
+  
+43499-56
+aula-plastica
+Sobremesa
+Aula Plástica
+Alta
+Sin acciones
+  
+43499-57
+laboratorio-sec
+Sobremesa
+Laboratorio Secundaria
+Alta
+Sin acciones
+  
+43499-58
+eq-junto-1cpri
+Sobremesa
+Aula junto 1ºC Primaria
+Alta
+Sin acciones
+  
+43499-59
+eq-aula3-bach
+Sobremesa
+Aula 3 Bachillerato
+Alta
+Sin acciones
+  
+43499-60
+aula-prim-01
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-61
+aula-prim-02
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-62
+aula-prim-03
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-63
+aula-prim-04
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-64
+aula-prim-05
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-65
+aula-prim-06
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-66
+aula-prim-07
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-67
+aula-prim-08
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-68
+aula-prim-09
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-69
+aula-prim-10
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-70
+aula-prim-11
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-71
+aula-prim-12
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-72
+aula-prim-13
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-73
+aula-prim-14
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-74
+aula-prim-15
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-75
+aula-prim-16
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-76
+aula-prim-17
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-77
+aula-prim-18
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-78
+aula-prim-19
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-79
+aula-prim-20
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-80
+aula-prim-21
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-81
+aula-prim-22
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-82
+aula-prim-23
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-83
+aula-prim-24
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-84
+aula-prim-25
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-85
+aula-prim-26
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-86
+aula-prim-27
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-87
+aula-prim-28
+Sobremesa
+Aula informática Primaria
+Alta
+Sin acciones
+  
+43499-88
+apoyosec
+Sobremesa
+Seminario 4
+Alta
+Sin acciones
+  
+43499-89
+ricoh aficio mp 201
+Otros
+Administración
+Alta
+Sin acciones
+  
+43499-90
+ricoh aficio mp 3001
+Otros
+Secretaria
+Alta
+Sin acciones
+  
+43499-91
+ricoh priport 3440
+Otros
+Secretaria
+Alta
+Sin acciones
+  
+43499-92
+ricoh aficio mp 201
+Otros
+Administración Secundaria
+Alta
+Sin acciones
+  
+43499-93
+hp laserjet p2055
+Impresoras
+Dirección
+Alta
+Sin acciones
+  
+43499-94
+hp laserjet 1102
+Impresoras
+Jefatura Estudios Primaria
+Alta
+Sin acciones
+  
+43499-95
+hp laserjet 3055
+Impresoras
+Jefatura Estudios Secundaria
+Alta
+Sin acciones
+  
+43499-96
+hp laserjet 1011
+Impresoras
+Pastoral Secundaria
+Alta
+Sin acciones
+  
+43499-97
+hp laserjet 1018
+Impresoras
+Orientación Secundaria
+Alta
+Sin acciones
+  
+43499-98
+hp laserjet p2014
+Impresoras
+Jefatura Estudios Bachillerato
+Alta
+Sin acciones
+  
+43499-99
+secretaria1
+Sobremesa
+Secretaria
+Alta
+Sin acciones
+  
+
+
+
+
+El Esparragal 
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Segundo Lunes del mes
+Técnico que realiza la visita
+Manolo
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+12
+Webs registradas
+1
+Código
+43000891
+CIF/NIF
+B41694720
+Nombre completo
+El Esparragal
+Razón social
+Finca El Esparragal
+Dirección
+Finca El Esparragal. Autovía A66 Km 795
+Población
+Gerena
+Provincia
+Sevilla
+Email de gerente
+fermin@elesparragal.com
+Teléfono de contacto
+955783431
+Fecha alta
+21/01/2015
+
+
+Equipos:
+
+
+43891-00
+servidor
+Servidor
+-
+Alta
+20/10/2016 09:20
+  
+43891-01
+equipo francisco
+Sobremesa
+-
+Alta
+Sin acciones
+  
+43891-02
+antonio
+Portátil
+-
+Alta
+Sin acciones
+  
+43891-03
+luis
+Portátil
+-
+Alta
+Sin acciones
+  
+43891-04
+hp officejet 8600
+Impresoras
+-
+Alta
+Sin acciones
+  
+43891-05
+fermin
+Portátil
+-
+Alta
+Sin acciones
+  
+43891-06
+recepcion3
+Portátil
+-
+Alta
+Sin acciones
+  
+43891-07
+hp officejet 8600
+Impresoras
+-
+Alta
+Sin acciones
+  
+43891-08
+recepcion1
+Sobremesa
+-
+Alta
+Sin acciones
+  
+43891-09
+ap01
+Redes
+-
+Alta
+Sin acciones
+  
+43891-10
+ap02
+Redes
+-
+Alta
+Sin acciones
+  
+43891-11
+ap03
+Redes
+-
+Alta
+Sin acciones
+  
+
+
+
+
+
+
+
+Abaxial Informática S.L.
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43000892
+CIF/NIF
+B91662254
+Nombre completo
+Abaxial Informática S.L.
+Razón social
+Abaxial Informática S.l.
+Dirección
+San Vicente de Paúl 10 D, local 8
+Población
+Sevilla
+Provincia
+Sevilla
+Gerente
+José Antonio Jiménez
+Email de gerente
+jajimenez@abaxial.es
+Fecha alta
+-
+
+
+
+
+Federación Andaluza de Baloncesto
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Primer Jueves del mes
+Técnico que realiza la visita
+Sandra
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+12
+Webs registradas
+1
+Código
+43000900
+CIF/NIF
+G14085674
+Nombre completo
+Federación Andaluza de Baloncesto
+Razón social
+Delegación Sevilla
+Dirección
+C/ Avión Cuatro vientos, 17 Local 4
+Población
+Sevilla
+Provincia
+Sevilla
+Email de gerente
+gperez@fabsevilla.org
+Teléfono de contacto
+954634577
+Fecha alta
+13/02/2015
+
+
+Equipos:
+
+
+43900-00
+naismith
+Servidor
+Antesala
+Alta
+17/10/2016 10:15
+  
+43900-01
+arbitros
+Sobremesa
+Sala
+Alta
+Sin acciones
+  
+43900-02
+contabilidad
+Sobremesa
+Sala
+Alta
+Sin acciones
+  
+43900-03
+directarbitral
+Sobremesa
+Sala
+Alta
+Sin acciones
+  
+43900-04
+auxcomp
+Sobremesa
+Sala
+Alta
+Sin acciones
+  
+43900-05
+coordinador
+Sobremesa
+Sala
+Alta
+Sin acciones
+  
+43900-06
+direcarbitral
+Sobremesa
+Sala
+Alta
+Sin acciones
+  
+43900-07
+delegacion
+Sobremesa
+Sala
+Alta
+Sin acciones
+  
+43900-08
+hp laserjet cp1025
+Impresoras
+Sala
+Alta
+Sin acciones
+  
+43900-09
+canon mx430 series
+Impresoras
+Sala
+Alta
+Sin acciones
+  
+43900-10
+hp laserjet p1005
+Impresoras
+Sala
+Alta
+Sin acciones
+  
+43900-11
+hp laserjet p1018
+Impresoras
+Sala
+Alta
+Sin acciones
+  
+
+
+
+
+Morales Kongsvold y Asociados S.L
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Técnico que realiza la visita
+José Antonio
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+1
+Webs registradas
+1
+Código
+43000916
+CIF/NIF
+B90195975
+Nombre completo
+Morales Kongsvold y Asociados S.L
+Razón social
+Morales Kongsvold y Asociados S.L
+Dirección
+C/ Ricardo Soriano, 12, 9ºF
+Población
+Marbella
+Provincia
+Málaga
+Gerente
+José Carlos Morales Martín
+Email de gerente
+jcmorales@moralesmartinabogados.com
+Fecha alta
+24/04/2015
+
+
+Equipos:
+
+43916-00
+ganivet
+Servidor
+-
+Alta
+18/10/2016 09:15
+  
+
+
+
+
+Gubia Sevilla S. L.
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+05
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43000918
+CIF/NIF
+B91542464
+Nombre completo
+Gubia Sevilla S. L.
+Dirección
+Gravina 7, Bajo 41001
+Población
+Sevilla
+Provincia
+Sevilla
+Gerente
+Verónica Sancho
+Email de gerente
+veronica@grupogubia.com
+Fecha alta
+01/02/18
+
+
+
+
+
+CEIP Juan Ramón Jiménez
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Segundo Jueves del mes
+Técnico que realiza la visita
+Sandra
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+5
+Webs registradas
+0
+Código
+43001014
+CIF/NIF
+S4111001F
+Nombre completo
+CEIP Juan Ramón Jiménez
+Dirección
+C/ San José de Calasanz
+Población
+Sevilla
+Provincia
+Sevilla
+Gerente
+Myriam
+Teléfono de contacto
+955623496
+Fecha alta
+03/10/2016
+
+
+Equipos:
+
+431014-00
+direccion
+Sobremesa
+Dirección
+Alta
+Sin acciones
+  
+431014-01
+ceipjrj-pc
+Sobremesa
+Sala Profesores
+Alta
+Sin acciones
+  
+431014-02
+secretaria
+Sobremesa
+Administración
+Alta
+Sin acciones
+  
+431014-03
+secretaria02
+Sobremesa
+Secretaría
+Alta
+Sin acciones
+  
+431014-04
+equipo-pc
+Sobremesa
+Jefatura de Estudios
+Alta
+Sin acciones
+  
+
+
+
+
+
+CEPR SAR Infanta Leonor
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Técnico que realiza la visita
+Manolo
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+28
+Webs registradas
+0
+Código
+43001016
+CIF/NIF
+S4111001F
+Nombre completo
+CEPR SAR Infanta Leonor
+Razón social
+Cepr Sar Infanta Leonor
+Dirección
+Ramón y Cajal, s/n
+Población
+Tomares
+Provincia
+Sevilla
+Gerente
+Susana
+Email de gerente
+franelca@gmail.com
+Email persona TIC
+jlinfanta@gmail.com
+Teléfono de contacto
+955624295
+Fecha alta
+01/11/2016
+
+
+Equipos:
+
+431016-00
+profesores01
+Sobremesa
+Sala Profesores
+Alta
+Sin acciones
+  
+431016-01
+profesores02
+Sobremesa
+Sala Profesores
+Alta
+Sin acciones
+  
+431016-02
+susana
+Portátil
+Dirección
+Alta
+Sin acciones
+  
+431016-03
+usuario-pc
+Sobremesa
+Secretaria
+Alta
+Sin acciones
+  
+431016-04
+pdm
+Portátil
+Secretaria
+Alta
+Sin acciones
+  
+431016-05
+jeft-estu
+Portátil
+Jefatura Estudios
+Alta
+Sin acciones
+  
+431016-06
+6aprimaria
+Sobremesa
+6ºA Primaria
+Alta
+Sin acciones
+  
+431016-07
+6bprimaria
+Sobremesa
+6ºB Primaria
+Alta
+Sin acciones
+  
+431016-08
+6cprimaria
+Sobremesa
+6ºC Primaria
+Alta
+Sin acciones
+  
+431016-09
+aula-matinal
+Sobremesa
+Aula Matinal
+Alta
+Sin acciones
+  
+431016-10
+2dprimaria
+Portátil
+2ºD Primaria
+Alta
+Sin acciones
+  
+431016-11
+2cprimaria
+Portátil
+2ºC Primaria
+Alta
+Sin acciones
+  
+431016-12
+2bprimaria
+Sobremesa
+2ºB Primaria
+Alta
+Sin acciones
+  
+431016-13
+4dprimaria
+Portátil
+4ºD Primaria
+Alta
+Sin acciones
+  
+431016-14
+4cprimaria
+Portátil
+4ºC Primaria
+Alta
+Sin acciones
+  
+431016-15
+4bprimaria
+Portátil
+4ºB Primaria
+Alta
+Sin acciones
+  
+431016-16
+5aprimaria
+Sobremesa
+5ºA Primaria
+Alta
+Sin acciones
+  
+431016-17
+5bprimaria
+Sobremesa
+5ºB Primaria
+Alta
+Sin acciones
+  
+431016-18
+5cprimaria
+Sobremesa
+5ºC Primaria
+Alta
+Sin acciones
+  
+431016-19
+biblioteca
+Sobremesa
+Biblioteca
+Alta
+Sin acciones
+  
+431016-20
+musica
+Portátil
+Música
+Alta
+Sin acciones
+  
+431016-21
+3bprimaria
+Sobremesa
+3ºB Primaria
+Alta
+Sin acciones
+  
+431016-22
+pt
+Sobremesa
+Aula PT
+Alta
+Sin acciones
+  
+431016-23
+3aprimaria
+Sobremesa
+3ºA Primaria
+Alta
+Sin acciones
+  
+431016-24
+4aprimaria
+Portátil
+4ºA Primaria
+Alta
+Sin acciones
+  
+431016-25
+2aprimaria
+Portátil
+2ºA Primaria
+Alta
+Sin acciones
+  
+431016-26
+3dprimaria
+Portátil
+3ºD Primaria
+Alta
+Sin acciones
+  
+431016-27
+3cprimaria
+Portátil
+3ºC Primaria
+Alta
+Sin acciones
+  
+
+
+
+
+
+
+
+
+Francisco de Asís Serrano Castro
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Dia mantenimiento
+Primer Martes del mes
+Técnico que realiza la visita
+Sandra
+Número de visitas en el mes
+1
+Equipos/dispositivos inventariados
+8
+Webs registradas
+0
+Código
+43001028
+CIF/NIF
+28581215N
+Nombre completo
+Francisco de Asís Serrano Castro
+Razón social
+Serrano Abogados
+Dirección
+Avda. de la Constitución, 23-25, 4º Planta
+Población
+Sevilla
+Provincia
+Sevilla
+Gerente
+Francisco Serrano
+Persona TIC
+Ana
+Email persona TIC
+administracion@serranoabogadosdefamilia.es
+Teléfono de contacto
+954564051
+Fecha alta
+03/10/2016
+
+
+
+Equipos:
+
+431028-00
+server
+Servidor
+Despacho becarios
+Alta
+17/10/2016 12:00
+  
+431028-01
+ana
+Sobremesa
+Recepción
+Alta
+Sin acciones
+  
+431028-02
+secretaria2
+Sobremesa
+Recepción
+Alta
+Sin acciones
+  
+431028-03
+serrano-pc
+Sobremesa
+Despacho fserrano
+Alta
+Sin acciones
+  
+431028-04
+equipo
+Sobremesa
+Sala Reuniones
+Alta
+Sin acciones
+  
+431028-05
+eloy-hp
+Sobremesa
+Despacho
+Alta
+Sin acciones
+  
+431028-06
+alvaro
+Portátil
+Despacho
+Alta
+Sin acciones
+  
+431028-07
+asus-javier
+Portátil
+Despacho
+Alta
+Sin acciones
+  
+
+
+
+
+
+
+
+Soluzion Iluminacion Profesional Andalucía S. L.
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001120
+CIF/NIF
+B41806191
+Nombre completo
+Soluzion Iluminacion Profesional Andalucía S. L.
+Dirección
+Plaza del Zurraque Local 3 41010
+Población
+Sevilla
+Provincia
+Sevilla
+Fecha alta
+01/02/18
+
+
+Equipos:
+
+
+IES Triana
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001146
+CIF/NIF
+S4111001F
+Nombre completo
+IES Triana
+Dirección
+San Jacinto 79
+Población
+Sevilla
+Provincia
+Sevilla
+Gerente
+Emilio José Díaz Borrrego
+Email de gerente
+director@iestriana.com
+Email persona TIC
+secretaria@iestriana.com
+Teléfono de contacto
+955622853
+Fecha alta
+16/01/2023
+
+
+Equipos:
+
+
+Avante Comunicación S.L
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001203
+CIF/NIF
+B80518822
+Nombre completo
+Avante Comunicación S.L
+Razón social
+Avante Comunicación S.L.
+Dirección
+Chile 10 Edificio Madrid 92 Of. 146
+Población
+Madrid
+Provincia
+Madrid
+Gerente
+Ramón García de la Borbolla
+Email de gerente
+ramon.rodriguezdelaborbolla@avantemedios.com
+Teléfono de contacto
+673460587
+Fecha alta
+01/07/2020
+
+
+
+
+CEIP Victoria Díez
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001207
+CIF/NIF
+S4111001F
+Nombre completo
+CEIP Victoria Díez
+Dirección
+Candelón s/n
+Población
+Sevilla
+Provincia
+Sevilla
+Gerente
+Manuel Jesus Navarro Sanchez (coordinador)
+Email de gerente
+manunavarro83@hotmail.com
+Teléfono de contacto
+955622376
+Fecha alta
+12/01/2023
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fertiberia S.A
+
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001229
+CIF/NIF
+A28165298
+Nombre completo
+Fertiberia S.A
+Dirección
+Avda. Reina Mercedes
+Población
+Sevilla
+Provincia
+Sevilla
+Fecha alta
+01-06-2019
+
+
+
+IES Cavaleri
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001267
+CIF/NIF
+S4111001F
+Nombre completo
+IES Cavaleri
+Dirección
+Ronda de Cavaleri s/n
+Población
+Mairena del Aljarafe
+Provincia
+Sevilla
+Gerente
+Clara (secretaria)
+Email de gerente
+cavaleri.direccion@gmail.com
+Fecha alta
+dd/mm/aaaa
+
+
+
+
+IES Alixar
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001380
+CIF/NIF
+S4111001F
+Nombre completo
+IES Alixar
+Dirección
+Avda. de la Unidad s/n
+Población
+Castilleja de la Cuesta
+Provincia
+Sevilla
+Gerente
+Lola Ortiz (secreataria)
+Email de gerente
+secretaria@iesalixar.org
+Persona TIC
+Teresa Alonso
+Email persona TIC
+prof.talonso@iesalixar.org
+Teléfono de contacto
+671567396
+Fecha alta
+18/01/2023
+
+
+
+
+
+
+
+Religiosas de María Reparadora Cdad. de Cádiz
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001478
+CIF/NIF
+R11002971
+Nombre completo
+Religiosas de María Reparadora Cdad. de Cádiz
+Dirección
+C/. Zaragoza 14
+Población
+Cádiz
+Provincia
+Cádiz
+Fecha alta
+28-09-23
+
+
+
+
+CEIP Almotamid
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001489
+CIF/NIF
+S4111001F
+Nombre completo
+CEIP Almotamid
+Dirección
+Padre Manuel Trenas, s/n
+Población
+Sevilla
+Provincia
+Sevilla
+Gerente
+Almudena (secreataría)
+Email de gerente
+amarflo141@g.educaand.es
+Teléfono de contacto
+955 62 35 08 / 667446719
+Fecha alta
+17/01/2023
+
+
+
+IES Juan de Mairena
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001507
+CIF/NIF
+S4111001F
+Nombre completo
+IES Juan de Mairena
+Dirección
+Avda. de las Américas
+Población
+Mairena del Aljarafe
+Provincia
+Sevilla
+Fecha alta
+01-01-22
+
+
+
+
+
+
+
+
+Reparadoras Roma
+
+
+
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001529
+CIF/NIF
+80091550584
+Nombre completo
+Reparadoras Roma
+Dirección
+Via dei Lucchesi 9
+Población
+Roma
+Provincia
+Lazio
+Fecha alta
+01/05/22
+
+
+
+Asociación Montetabor
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001559
+CIF/NIF
+G41105065
+Nombre completo
+Asociación Montetabor
+Dirección
+Santa María 19
+Población
+Gines
+Provincia
+Sevilla
+Gerente
+Mercedes(coordinadora)
+Email de gerente
+asocmontetabor@gmail.com
+Teléfono de contacto
+638416332 / 638739787
+Fecha alta
+16/01/2023
+
+
+
+Fundación Montetabor
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001565
+CIF/NIF
+G91616219
+Nombre completo
+Fundación Montetabor
+Dirección
+Avendia Montetabor 1
+Población
+Bollullos de la Mitación
+Provincia
+Sevilla
+Gerente
+María de los Ángeles
+Teléfono de contacto
+638739787
+Fecha alta
+16/01/2023
+
+
+
+
+
+
+
+
+Aprende a Vivir Alcalá de Guadaira S. L.
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001631
+CIF/NIF
+B56482029
+Nombre completo
+Aprende a Vivir Alcalá de Guadaira S. L.
+Dirección
+María de Molina 7. Planta 3
+Población
+Valladolid
+Provincia
+Valladolid
+Gerente
+Carmen Ibanco (directora Residencia)
+Fecha alta
+dd/mm/aaaa
+
+
+
+
+Gestión Holding Aprende a vivir S. L.
+
+
+
+
+Cliente
+      
+Estado
+Alta
+Mantenimiento
+Sí
+Equipos/dispositivos inventariados
+0
+Webs registradas
+0
+Código
+43001771
+CIF/NIF
+B10533909
+Nombre completo
+Gestión Holding Aprende a vivir S. L.
+Razón social
+Gestión Holding Aprende a vivir S. L.
+Dirección
+María de Molina 7, Planta 3. ofi 5-9
+Población
+Valladolid
+Provincia
+Valladolid
+Gerente
+Fran Sanchez
+Email de gerente
+fran@aprendeavivir.es
+Teléfono de contacto
+983 57 10 00
+Fecha alta
+29-04-25
+
+
+
+
+
+IMPORTAR EN USUARIOS SUS WEBS
+
+
+Código
+Nombre
+Cliente
+Última revisión
+Opciones
+1
+Abaxial
+Abaxial Informática
+22/02/2016 09:10
+  
+6
+Web de mantenimiento
+Abaxial Informática
+22/02/2016 09:10
+  
+15
+Nordic Lawyers
+Morales Kongsvold y Asociados S.L
+22/02/2016 09:15
+  
+
+
+
+CREACION DE UN CAMPO DE OTROS DISPOSITIVO Y ASOCIARLOS CON SU CLIENTE
+
+
+
+
+
+
+
+Ref
+Equipo
+Tipo
+Cliente
+Última revisión
+Opciones
+43499-41
+dpto-desdoble
+Otros
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-49
+dpto-salon
+Otros
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-89
+ricoh aficio mp 201
+Otros
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-90
+ricoh aficio mp 3001
+Otros
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-91
+ricoh priport 3440
+Otros
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-92
+ricoh aficio mp 201
+Otros
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-93
+hp laserjet p2055
+Impresoras
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-94
+hp laserjet 1102
+Impresoras
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-95
+hp laserjet 3055
+Impresoras
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-96
+hp laserjet 1011
+Impresoras
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-97
+hp laserjet 1018
+Impresoras
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-98
+hp laserjet p2014
+Impresoras
+Fundación Spínola (SE)
+Sin acciones
+  
+43502-05
+hp laserjet 1022
+Impresoras
+
+
+Sin acciones
+  
+43527-02
+epson perfection v33
+Otros
+Círculo Mercantil e Industrial de Sevilla
+Sin acciones
+  
+43527-29
+fargo dtc1250e
+Impresoras
+Círculo Mercantil e Industrial de Sevilla
+Sin acciones
+  
+43527-30
+hp scanjet 300
+Otros
+Círculo Mercantil e Industrial de Sevilla
+Sin acciones
+  
+43527-31
+fargo dtc1250e
+Impresoras
+Círculo Mercantil e Industrial de Sevilla
+Sin acciones
+  
+43527-32
+hp scanjet 300
+Otros
+Círculo Mercantil e Industrial de Sevilla
+Sin acciones
+  
+43716-17
+konica minolta mfp
+Impresoras
+Polygroupe Europe S. L.
+Sin acciones
+  
+43784-XX
+toshiba estudio 4520
+Impresoras
+CEIP San Jacinto
+Sin acciones
+  
+43790-17
+brother dcp-j725dw
+Impresoras
+Grupo Educativo Delta S. A.
+Sin acciones
+  
+43883-01
+brother hl2130
+Impresoras
+CEIP Josefa Navarro Zamora
+Sin acciones
+  
+43883-04
+hp larserjet p2055dn
+Impresoras
+CEIP Josefa Navarro Zamora
+Sin acciones
+  
+43883-05
+epson 1670
+Otros
+CEIP Josefa Navarro Zamora
+Sin acciones
+  
+43883-07
+samsung ml-1665
+Impresoras
+CEIP Josefa Navarro Zamora
+Sin acciones
+  
+43883-08
+nas-intranet
+Redes
+CEIP Josefa Navarro Zamora
+Sin acciones
+  
+43883-10
+hp laserjet cp1215
+Impresoras
+CEIP Josefa Navarro Zamora
+Sin acciones
+  
+43883-12
+brother hl2130
+Impresoras
+CEIP Josefa Navarro Zamora
+Sin acciones
+  
+43891-04
+hp officejet 8600
+Impresoras
+El Esparragal
+Sin acciones
+  
+43891-07
+hp officejet 8600
+Impresoras
+El Esparragal
+Sin acciones
+  
+43891-09
+ap01
+Redes
+El Esparragal
+Sin acciones
+  
+43891-10
+ap02
+Redes
+El Esparragal
+Sin acciones
+  
+43891-11
+ap03
+Redes
+El Esparragal
+Sin acciones
+  
+43900-08
+hp laserjet cp1025
+Impresoras
+Federación Andaluza de Baloncesto
+Sin acciones
+  
+43900-09
+canon mx430 series
+Impresoras
+Federación Andaluza de Baloncesto
+Sin acciones
+  
+43900-10
+hp laserjet p1005
+Impresoras
+Federación Andaluza de Baloncesto
+Sin acciones
+  
+43900-11
+hp laserjet p1018
+Impresoras
+Federación Andaluza de Baloncesto
+Sin acciones
+  
+
+
+
+
+
+	
+CREACION DE UN CAMPO DE REDES Y ASOCIARLOS CON SU CLIENTE
+
+
+
+
+
+
+Ref
+Equipo
+Tipo
+Cliente
+Última revisión
+Opciones
+43883-08
+nas-intranet
+Redes
+CEIP Josefa Navarro Zamora
+Sin acciones
+  
+43891-09
+ap01
+Redes
+El Esparragal
+Sin acciones
+  
+43891-10
+ap02
+Redes
+El Esparragal
+Sin acciones
+  
+43891-11
+ap03
+Redes
+El Esparragal
+Sin acciones
+  
+
+
+
+
+
+
+
+
+
+CREACION DE UN CAMPO DE IMPRESORAS Y ASOCIARLOS CON SU CLIENTE
+
+
+Ref
+Equipo
+Tipo
+Cliente
+Última revisión
+Opciones
+43499-93
+hp laserjet p2055
+Impresoras
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-94
+hp laserjet 1102
+Impresoras
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-95
+hp laserjet 3055
+Impresoras
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-96
+hp laserjet 1011
+Impresoras
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-97
+hp laserjet 1018
+Impresoras
+Fundación Spínola (SE)
+Sin acciones
+  
+43499-98
+hp laserjet p2014
+Impresoras
+Fundación Spínola (SE)
+Sin acciones
+  
+43502-05
+hp laserjet 1022
+Impresoras
+
+
+Sin acciones
+  
+43527-29
+fargo dtc1250e
+Impresoras
+Círculo Mercantil e Industrial de Sevilla
+Sin acciones
+  
+43527-31
+fargo dtc1250e
+Impresoras
+Círculo Mercantil e Industrial de Sevilla
+Sin acciones
+  
+43716-17
+konica minolta mfp
+Impresoras
+Polygroupe Europe S. L.
+Sin acciones
+  
+43784-XX
+toshiba estudio 4520
+Impresoras
+CEIP San Jacinto
+Sin acciones
+  
+43790-17
+brother dcp-j725dw
+Impresoras
+Grupo Educativo Delta S. A.
+Sin acciones
+  
+43883-01
+brother hl2130
+Impresoras
+CEIP Josefa Navarro Zamora
+Sin acciones
+  
+43883-04
+hp larserjet p2055dn
+Impresoras
+CEIP Josefa Navarro Zamora
+Sin acciones
+  
+43883-07
+samsung ml-1665
+Impresoras
+CEIP Josefa Navarro Zamora
+Sin acciones
+  
+43883-10
+hp laserjet cp1215
+Impresoras
+CEIP Josefa Navarro Zamora
+Sin acciones
+  
+43883-12
+brother hl2130
+Impresoras
+CEIP Josefa Navarro Zamora
+Sin acciones
+  
+43891-04
+hp officejet 8600
+Impresoras
+El Esparragal
+Sin acciones
+  
+43891-07
+hp officejet 8600
+Impresoras
+El Esparragal
+Sin acciones
+  
+43900-08
+hp laserjet cp1025
+Impresoras
+Federación Andaluza de Baloncesto
+Sin acciones
+  
+43900-09
+canon mx430 series
+Impresoras
+Federación Andaluza de Baloncesto
+Sin acciones
+  
+43900-10
+hp laserjet p1005
+Impresoras
+Federación Andaluza de Baloncesto
+Sin acciones
+  
+43900-11
+hp laserjet p1018
+Impresoras
+Federación Andaluza de Baloncesto
+Sin acciones
+  
+
+

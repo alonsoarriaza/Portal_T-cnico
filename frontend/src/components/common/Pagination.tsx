@@ -5,9 +5,10 @@ interface PaginationProps {
   page: number;
   totalPages: number;
   totalElements: number;
-  size: number;
+  size: number | 'ALL';
   onPageChange: (newPage: number) => void;
-  onSizeChange?: (newSize: number) => void;
+  onSizeChange?: (newSize: any) => void;
+  sizeOptions?: (number | 'ALL')[];
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
@@ -17,9 +18,14 @@ export const Pagination: React.FC<PaginationProps> = ({
   size,
   onPageChange,
   onSizeChange,
+  sizeOptions = [10, 25, 50, 100, 'ALL'],
 }) => {
-  const startItem = totalElements === 0 ? 0 : page * size + 1;
-  const endItem = Math.min((page + 1) * size, totalElements);
+  const isAll = size === 'ALL' || (typeof size === 'number' && size <= 0);
+  const numSize = typeof size === 'number' && size > 0 ? size : totalElements;
+  const startItem = totalElements === 0 ? 0 : isAll ? 1 : page * numSize + 1;
+  const endItem = isAll ? totalElements : Math.min((page + 1) * numSize, totalElements);
+  const effectiveTotalPages = isAll ? (totalElements === 0 ? 0 : 1) : totalPages;
+  const effectivePage = isAll ? 0 : page;
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-3 text-xs text-slate-500">
@@ -34,12 +40,17 @@ export const Pagination: React.FC<PaginationProps> = ({
             <span>Por pág:</span>
             <select
               value={size}
-              onChange={(e) => onSizeChange(Number(e.target.value))}
+              onChange={(e) => {
+                const val = e.target.value;
+                onSizeChange(val === 'ALL' ? 'ALL' : Number(val));
+              }}
               className="rounded bg-white border border-slate-300 text-slate-800 px-2 py-1 text-xs focus:ring-brand-500"
             >
-              <option value={10}>10</option>
-              <option value={20}>20</option>
-              <option value={50}>50</option>
+              {sizeOptions.map((opt) => (
+                <option key={String(opt)} value={opt}>
+                  {opt === 'ALL' ? 'Todos' : opt}
+                </option>
+              ))}
             </select>
           </div>
         )}
@@ -47,18 +58,18 @@ export const Pagination: React.FC<PaginationProps> = ({
 
       <div className="flex items-center gap-1.5">
         <button
-          onClick={() => onPageChange(Math.max(0, page - 1))}
-          disabled={page === 0}
+          onClick={() => onPageChange(Math.max(0, effectivePage - 1))}
+          disabled={isAll || effectivePage === 0}
           className="p-1.5 rounded-lg border border-slate-300 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
         <span className="px-2 font-medium text-slate-700">
-          Página {totalPages === 0 ? 0 : page + 1} de {totalPages}
+          Página {effectiveTotalPages === 0 ? 0 : effectivePage + 1} de {effectiveTotalPages}
         </span>
         <button
-          onClick={() => onPageChange(Math.min(totalPages - 1, page + 1))}
-          disabled={page >= totalPages - 1 || totalPages === 0}
+          onClick={() => onPageChange(Math.min(effectiveTotalPages - 1, effectivePage + 1))}
+          disabled={isAll || effectivePage >= effectiveTotalPages - 1 || effectiveTotalPages === 0}
           className="p-1.5 rounded-lg border border-slate-300 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >
           <ChevronRight className="w-4 h-4" />

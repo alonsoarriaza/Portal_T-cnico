@@ -33,10 +33,29 @@ public class EquipoController {
             @RequestParam(required = false) String search,
             @RequestParam(defaultValue = "false") boolean includeInactive,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "10") String size
     ) {
-        Pageable pageable = PageRequest.of(page, size);
+        boolean isAll = "ALL".equalsIgnoreCase(size) || "TODOS".equalsIgnoreCase(size) || "-1".equals(size);
+        Pageable pageable;
+        if (isAll) {
+            pageable = PageRequest.of(0, 100_000);
+        } else {
+            int pageSize = 10;
+            try {
+                pageSize = Integer.parseInt(size);
+                if (pageSize <= 0) pageSize = 10;
+            } catch (NumberFormatException e) {
+                pageSize = 10;
+            }
+            pageable = PageRequest.of(page, pageSize);
+        }
+
         PaginatedResponse<EquipoDTO> resultado = equipoService.listarEquipos(clienteId, tipo, estado, search, includeInactive, pageable);
+        if (isAll) {
+            resultado.setSize((int) resultado.getTotalElements());
+            resultado.setPage(0);
+            resultado.setTotalPages(resultado.getTotalElements() > 0 ? 1 : 0);
+        }
         return ResponseEntity.ok(ApiResponse.ok(resultado));
     }
 

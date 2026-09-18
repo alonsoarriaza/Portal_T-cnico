@@ -54,7 +54,7 @@ public class PdfExportService {
 
             PdfPCell leftCell = new PdfPCell();
             leftCell.setBorder(Rectangle.NO_BORDER);
-            leftCell.addElement(new Paragraph("ABAXIAL PORTAL TÉCNICO", titleFont));
+            leftCell.addElement(new Paragraph("PORTAL TÉCNICO ABAXIAL", titleFont));
             leftCell.addElement(new Paragraph("Ficha Técnica Integral de Cliente", subtitleFont));
 
             PdfPCell rightCell = new PdfPCell();

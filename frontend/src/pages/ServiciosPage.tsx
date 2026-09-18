@@ -17,7 +17,7 @@ export const ServiciosPage: React.FC = () => {
   const [totalElements, setTotalElements] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(0);
-  const [size, setSize] = useState(10);
+  const [size, setSize] = useState<number | 'ALL'>(10);
 
   const [search, setSearch] = useState('');
   const [estado, setEstado] = useState('');
@@ -28,11 +28,12 @@ export const ServiciosPage: React.FC = () => {
   const loadServicios = useCallback(async () => {
     try {
       setLoading(true);
+      const isAll = size === 'ALL';
       const data = await serviciosApi.list({
         search: search || undefined,
         estado: estado || undefined,
-        page,
-        size,
+        page: isAll ? 0 : page,
+        size: isAll ? 'ALL' : size,
       });
       setServicios(data.content);
       setTotalElements(data.totalElements);
@@ -123,7 +124,11 @@ export const ServiciosPage: React.FC = () => {
             totalElements={totalElements}
             size={size}
             onPageChange={setPage}
-            onSizeChange={setSize}
+            onSizeChange={(newSize) => {
+              setSize(newSize);
+              setPage(0);
+            }}
+            sizeOptions={[10, 25, 50, 100, 'ALL']}
           />
         </div>
       </div>

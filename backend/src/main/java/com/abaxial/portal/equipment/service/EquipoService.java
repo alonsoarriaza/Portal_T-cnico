@@ -75,6 +75,10 @@ public class EquipoService {
                 .marca(req.getMarca())
                 .modelo(req.getModelo())
                 .numeroSerie(req.getNumeroSerie())
+                .nombreEquipo(req.getNombreEquipo())
+                .ubicacion(req.getUbicacion())
+                .ultimaRevision(req.getUltimaRevision())
+                .url(req.getUrl())
                 .estado(req.getEstado() != null && !req.getEstado().isBlank() ? req.getEstado().toUpperCase() : "OPERATIVO")
                 .fechaAlta(req.getFechaAlta() != null ? req.getFechaAlta() : LocalDate.now())
                 .fechaBaja(req.getFechaBaja())
@@ -121,6 +125,18 @@ public class EquipoService {
         }
         if (req.getNumeroSerie() != null) {
             equipo.setNumeroSerie(req.getNumeroSerie());
+        }
+        if (req.getNombreEquipo() != null) {
+            equipo.setNombreEquipo(req.getNombreEquipo());
+        }
+        if (req.getUbicacion() != null) {
+            equipo.setUbicacion(req.getUbicacion());
+        }
+        if (req.getUltimaRevision() != null) {
+            equipo.setUltimaRevision(req.getUltimaRevision());
+        }
+        if (req.getUrl() != null) {
+            equipo.setUrl(req.getUrl());
         }
         if (req.getEstado() != null && !req.getEstado().isBlank()) {
             equipo.setEstado(req.getEstado().toUpperCase());

@@ -31,7 +31,7 @@ public class Cliente {
     @Column(nullable = false, unique = true, length = 50)
     private String codigo;
 
-    @Column(name = "nif_cif", nullable = false, unique = true, length = 50)
+    @Column(name = "nif_cif", nullable = false, length = 50)
     private String nifCif;
 
     @Column(nullable = false, length = 150)

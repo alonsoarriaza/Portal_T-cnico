@@ -59,7 +59,7 @@ export const clientesApi = {
     provincia?: string;
     includeInactive?: boolean;
     page?: number;
-    size?: number;
+    size?: number | string;
     sortBy?: string;
     sortDir?: string;
   }) => {
@@ -92,6 +92,10 @@ export const clientesApi = {
     const res = await apiClient.delete<ApiResponse<void>>(`/clientes/${id}`);
     return res.data;
   },
+  deletePermanente: async (id: number) => {
+    const res = await apiClient.delete<ApiResponse<void>>(`/clientes/${id}/permanente`);
+    return res.data;
+  },
   getDashboardStats: async () => {
     const res = await apiClient.get<ApiResponse<DashboardStats>>('/dashboard');
     return res.data.data;
@@ -99,6 +103,22 @@ export const clientesApi = {
   downloadPdf: async (id: number) => {
     const res = await apiClient.get(`/clientes/${id}/pdf`, { responseType: 'blob' });
     return res.data;
+  },
+  analizarImportacion: async (file: File) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    const res = await apiClient.post<ApiResponse<any>>('/clientes/importar/analizar', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return res.data.data;
+  },
+  ejecutarImportacion: async (file: File) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    const res = await apiClient.post<ApiResponse<any>>('/clientes/importar/ejecutar', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return res.data.data;
   },
 };
 
@@ -133,7 +153,7 @@ export const equiposApi = {
     search?: string;
     includeInactive?: boolean;
     page?: number;
-    size?: number;
+    size?: number | string;
   }) => {
     const res = await apiClient.get<ApiResponse<PaginatedResponse<Equipo>>>('/equipos', { params });
     return res.data.data;
@@ -172,7 +192,7 @@ export const serviciosApi = {
     search?: string;
     includeInactive?: boolean;
     page?: number;
-    size?: number;
+    size?: number | string;
   }) => {
     const res = await apiClient.get<ApiResponse<PaginatedResponse<Servicio>>>('/servicios', { params });
     return res.data.data;
@@ -205,7 +225,7 @@ export const websApi = {
     search?: string;
     includeInactive?: boolean;
     page?: number;
-    size?: number;
+    size?: number | string;
   }) => {
     const res = await apiClient.get<ApiResponse<PaginatedResponse<WebItem>>>('/webs', { params });
     return res.data.data;
@@ -238,7 +258,7 @@ export const documentosApi = {
     search?: string;
     includeInactive?: boolean;
     page?: number;
-    size?: number;
+    size?: number | string;
   }) => {
     const res = await apiClient.get<ApiResponse<PaginatedResponse<Documento>>>('/documentos', { params });
     return res.data.data;
@@ -275,6 +295,28 @@ export const documentosApi = {
     });
     return res.data.data;
   },
+  uploadBatch: async (
+    clienteId: number,
+    files: File[],
+    categoria?: string,
+    descripcion?: string,
+    onProgress?: (percent: number) => void
+  ) => {
+    const formData = new FormData();
+    files.forEach((f) => formData.append('files', f));
+    if (categoria) formData.append('categoria', categoria);
+    if (descripcion) formData.append('descripcion', descripcion);
+
+    const res = await apiClient.post<ApiResponse<Documento[]>>(`/clientes/${clienteId}/documentos/batch`, formData, {
+      onUploadProgress: (progressEvent) => {
+        if (onProgress && progressEvent.total) {
+          const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          onProgress(percent);
+        }
+      },
+    });
+    return res.data.data;
+  },
   uploadNewVersion: async (
     documentoId: number,
     file: File,
@@ -302,6 +344,10 @@ export const documentosApi = {
     return res.data;
   },
   deactivate: async (id: number) => {
+    const res = await apiClient.delete<ApiResponse<void>>(`/documentos/${id}`);
+    return res.data;
+  },
+  delete: async (id: number) => {
     const res = await apiClient.delete<ApiResponse<void>>(`/documentos/${id}`);
     return res.data;
   },
@@ -355,7 +401,7 @@ export const auditoriaApi = {
     desde?: string;
     hasta?: string;
     page?: number;
-    size?: number;
+    size?: number | string;
   }) => {
     const res = await apiClient.get<ApiResponse<PaginatedResponse<AuditoriaItem>>>('/auditoria', { params });
     return res.data.data;
@@ -372,7 +418,7 @@ export const usuariosApi = {
     search?: string;
     includeInactive?: boolean;
     page?: number;
-    size?: number;
+    size?: number | string;
   }) => {
     const res = await apiClient.get<ApiResponse<PaginatedResponse<UsuarioItem>>>('/usuarios', { params });
     return res.data.data;

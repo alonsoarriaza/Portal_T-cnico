@@ -3,6 +3,7 @@ package com.abaxial.portal.equipment.repository;
 import com.abaxial.portal.equipment.entity.Equipo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,6 +17,10 @@ public interface EquipoRepository extends JpaRepository<Equipo, Long> {
 
     Optional<Equipo> findByCodigoInventario(String codigoInventario);
 
+    Optional<Equipo> findByCodigoInventarioIgnoreCase(String codigoInventario);
+
+    Optional<Equipo> findByClienteIdAndCodigoInventarioIgnoreCase(Long clienteId, String codigoInventario);
+
     boolean existsByCodigoInventario(String codigoInventario);
 
     List<Equipo> findByClienteIdAndActivoTrueOrderByCodigoInventarioAsc(Long clienteId);
@@ -26,6 +31,7 @@ public interface EquipoRepository extends JpaRepository<Equipo, Long> {
 
     long countByClienteIdAndActivoTrue(Long clienteId);
 
+    @EntityGraph(attributePaths = {"cliente"})
     @Query("SELECT e FROM Equipo e WHERE " +
            "(:clienteId IS NULL OR e.cliente.id = :clienteId) AND " +
            "(:includeInactive = true OR e.activo = true) AND " +

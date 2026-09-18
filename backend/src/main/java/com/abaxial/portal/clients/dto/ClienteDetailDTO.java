@@ -62,7 +62,13 @@ public class ClienteDetailDTO {
                 : List.of();
 
         List<DocumentoDTO> docList = c.getDocumentos() != null
-                ? c.getDocumentos().stream().filter(d -> Boolean.TRUE.equals(d.getActivo())).map(DocumentoDTO::fromEntity).collect(Collectors.toList())
+                ? c.getDocumentos().stream()
+                    .filter(d -> Boolean.TRUE.equals(d.getActivo()))
+                    .sorted((d1, d2) -> String.CASE_INSENSITIVE_ORDER.compare(
+                            d1.getNombreOriginal() != null ? d1.getNombreOriginal() : "",
+                            d2.getNombreOriginal() != null ? d2.getNombreOriginal() : ""))
+                    .map(DocumentoDTO::fromEntity)
+                    .collect(Collectors.toList())
                 : List.of();
 
         List<EventoDTO> evList = c.getEventos() != null

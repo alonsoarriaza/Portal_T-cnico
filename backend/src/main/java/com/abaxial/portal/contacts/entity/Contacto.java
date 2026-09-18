@@ -24,22 +24,22 @@ public class Contacto {
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 150)
     private String nombre;
 
-    @Column(length = 100)
+    @Column(length = 150)
     private String apellidos;
 
-    @Column(length = 100)
+    @Column(length = 150)
     private String cargo;
 
-    @Column(length = 100)
+    @Column(length = 150)
     private String email;
 
-    @Column(length = 30)
+    @Column(length = 100)
     private String telefono;
 
-    @Column(name = "telefono_fijo", length = 30)
+    @Column(name = "telefono_fijo", length = 100)
     private String telefonoFijo;
 
     @Column(columnDefinition = "TEXT")

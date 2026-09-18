@@ -40,16 +40,29 @@ public class ClienteController {
             @RequestParam(required = false) String provincia,
             @RequestParam(defaultValue = "false") boolean includeInactive,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "10") String size,
             @RequestParam(defaultValue = "nombre") String sortBy,
             @RequestParam(defaultValue = "asc") String sortDir
     ) {
         Sort sort = sortDir.equalsIgnoreCase("desc") ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
-        Pageable pageable = PageRequest.of(page, size, sort);
+        boolean isAll = "ALL".equalsIgnoreCase(size) || "TODOS".equalsIgnoreCase(size) || "-1".equals(size);
+        Pageable pageable;
+        if (isAll) {
+            pageable = PageRequest.of(0, 100_000, sort);
+        } else {
+            int pageSize = 10;
+            try { pageSize = Integer.parseInt(size); if (pageSize <= 0) pageSize = 10; } catch (NumberFormatException e) { pageSize = 10; }
+            pageable = PageRequest.of(page, pageSize, sort);
+        }
 
         PaginatedResponse<ClienteListDTO> resultado = clienteService.listarClientes(
                 search, estado, mantenimiento, provincia, includeInactive, pageable
         );
+        if (isAll) {
+            resultado.setSize((int) resultado.getTotalElements());
+            resultado.setPage(0);
+            resultado.setTotalPages(resultado.getTotalElements() > 0 ? 1 : 0);
+        }
         return ResponseEntity.ok(ApiResponse.ok(resultado));
     }
 
@@ -119,6 +132,16 @@ public class ClienteController {
     ) {
         clienteService.desactivarCliente(id, auth.getName());
         return ResponseEntity.ok(ApiResponse.ok("Cliente desactivado correctamente", null));
+    }
+
+    @DeleteMapping("/{id}/permanente")
+    @PreAuthorize("hasRole('SUPER_ADMIN')")
+    public ResponseEntity<ApiResponse<Void>> eliminarClientePermanente(
+            @PathVariable Long id,
+            Authentication auth
+    ) {
+        clienteService.eliminarClientePermanente(id, auth.getName());
+        return ResponseEntity.ok(ApiResponse.ok("Cliente eliminado permanentemente", null));
     }
 
     @GetMapping("/{id}/pdf")

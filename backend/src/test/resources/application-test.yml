@@ -24,3 +24,7 @@ app:
   storage:
     type: local
     local-path: ./target/test-storage
+
+
+
+# Versiones de los documentos, elegir mostrar las 3 primeras versiones y luego un desplegable con mostrar 5 10 20 o todas , y luego la lista de documntos que salga por orden alfavetico

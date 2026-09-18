@@ -6,6 +6,18 @@
   body {
     @apply bg-slate-50 text-slate-900 font-sans antialiased;
   }
+
+  /* Forzar que todos los desplegables y opciones tengan texto negro y fondo blanco */
+  select,
+  select option,
+  select optgroup {
+    color: #0f172a !important; /* text-slate-900 / negro */
+    background-color: #ffffff !important;
+  }
+
+  select:focus {
+    color: #0f172a !important;
+  }
 }
 
 /* Custom Clean Scrollbars */

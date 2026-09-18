@@ -1,15 +1,35 @@
 import React from 'react';
-import { LogOut, User, Shield } from 'lucide-react';
+import { LogOut, User, Shield, Menu } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { Badge } from '../common/Badge';
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  onOpenMobile?: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onOpenMobile }) => {
   const { user, logout } = useAuth();
 
   return (
-    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 shrink-0 shadow-sm">
+    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 sm:px-6 shrink-0 shadow-sm">
       <div className="flex items-center gap-3">
-        <h2 className="text-sm font-semibold text-slate-800 hidden sm:block">
+        {/* Mobile Hamburger Toggle */}
+        <button
+          type="button"
+          onClick={onOpenMobile}
+          className="lg:hidden p-2 -ml-1 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors"
+          aria-label="Abrir menú de navegación"
+        >
+          <Menu className="w-5 h-5" />
+        </button>
+
+        {/* Mobile Header Brand */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <img src="/logo-abaxial.png" alt="Abaxial" className="h-7 w-7 object-contain rounded" />
+          <span className="font-black text-sm tracking-tight text-slate-900">Abaxial</span>
+        </div>
+
+        <h2 className="text-sm font-semibold text-slate-800 hidden lg:block">
           Portal de Gestión Técnica
         </h2>
       </div>
@@ -28,11 +48,13 @@ export const Navbar: React.FC = () => {
               {user?.email}
             </span>
           </div>
-          {user?.roles?.map((r) => (
-            <Badge key={r} variant={r === 'SUPER_ADMIN' ? 'brand' : 'slate'} size="sm">
-              {r}
-            </Badge>
-          ))}
+          <div className="hidden md:flex items-center gap-1">
+            {user?.roles?.map((r) => (
+              <Badge key={r} variant={r === 'SUPER_ADMIN' ? 'brand' : 'slate'} size="sm">
+                {r}
+              </Badge>
+            ))}
+          </div>
         </div>
 
         {/* Logout Button */}

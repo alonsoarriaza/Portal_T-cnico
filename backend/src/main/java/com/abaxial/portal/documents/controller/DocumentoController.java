@@ -34,10 +34,23 @@ public class DocumentoController {
             @RequestParam(required = false) String search,
             @RequestParam(defaultValue = "false") boolean includeInactive,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "10") String size
     ) {
-        Pageable pageable = PageRequest.of(page, size);
+        boolean isAll = "ALL".equalsIgnoreCase(size) || "TODOS".equalsIgnoreCase(size) || "-1".equals(size);
+        Pageable pageable;
+        if (isAll) {
+            pageable = PageRequest.of(0, 100_000);
+        } else {
+            int pageSize = 10;
+            try { pageSize = Integer.parseInt(size); if (pageSize <= 0) pageSize = 10; } catch (NumberFormatException e) { pageSize = 10; }
+            pageable = PageRequest.of(page, pageSize);
+        }
         PaginatedResponse<DocumentoDTO> resultado = documentoService.listarDocumentos(clienteId, categoria, search, includeInactive, pageable);
+        if (isAll) {
+            resultado.setSize((int) resultado.getTotalElements());
+            resultado.setPage(0);
+            resultado.setTotalPages(resultado.getTotalElements() > 0 ? 1 : 0);
+        }
         return ResponseEntity.ok(ApiResponse.ok(resultado));
     }
 
@@ -70,6 +83,20 @@ public class DocumentoController {
         DocumentoDTO creado = documentoService.subirDocumento(clienteId, categoria, descripcion, file, auth.getName());
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.ok("Documento subido exitosamente", creado));
+    }
+
+    @PostMapping(value = "/clientes/{clienteId}/documentos/batch", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PreAuthorize("hasAuthority('DOCUMENTO_SUBIR') or hasRole('SUPER_ADMIN')")
+    public ResponseEntity<ApiResponse<List<DocumentoDTO>>> subirDocumentosMultiples(
+            @PathVariable Long clienteId,
+            @RequestParam(required = false) String categoria,
+            @RequestParam(required = false) String descripcion,
+            @RequestPart("files") List<MultipartFile> files,
+            Authentication auth
+    ) {
+        List<DocumentoDTO> creados = documentoService.subirDocumentosMultiples(clienteId, categoria, descripcion, files, auth.getName());
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(ApiResponse.ok(creados.size() + " documentos subidos exitosamente", creados));
     }
 
     @PostMapping(value = "/documentos/{id}/versiones", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

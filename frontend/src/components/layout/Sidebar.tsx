@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import {
   LayoutDashboard,
@@ -10,8 +10,14 @@ import {
   Calendar,
   History,
   ShieldCheck,
+  X,
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+
+interface SidebarProps {
+  mobileOpen?: boolean;
+  onCloseMobile?: () => void;
+}
 
 interface SidebarItem {
   name: string;
@@ -21,7 +27,7 @@ interface SidebarItem {
   role?: string;
 }
 
-export const Sidebar: React.FC = () => {
+export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onCloseMobile }) => {
   const { hasPermission, hasRole } = useAuth();
 
   const navigation: SidebarItem[] = [
@@ -82,26 +88,44 @@ export const Sidebar: React.FC = () => {
     return true;
   });
 
-  return (
-    <aside className="w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 min-h-screen select-none">
+  const renderNavContent = (isMobile = false) => (
+    <>
       {/* Brand Header with clickable Link to Dashboard */}
-      <Link
-        to="/dashboard"
-        className="h-16 flex items-center gap-3 px-6 border-b border-slate-200 bg-white hover:bg-slate-50/80 transition-colors cursor-pointer group"
-        title="Ir al Dashboard de ABAXIAL"
-      >
-        <div className="w-10 h-10 rounded-xl bg-brand-600 group-hover:bg-brand-700 flex items-center justify-center text-white shadow-sm font-black text-xl transition-transform group-hover:scale-105">
-          A
-        </div>
-        <div>
-          <span className="font-black text-base tracking-tight text-slate-900 block leading-tight group-hover:text-brand-700 transition-colors">
-            ABAXIAL
-          </span>
-          <span className="text-[11px] uppercase font-bold tracking-widest text-brand-600 block">
-            Portal Técnico
-          </span>
-        </div>
-      </Link>
+      <div className="h-16 flex items-center justify-between px-5 border-b border-slate-200 bg-white">
+        <Link
+          to="/dashboard"
+          onClick={isMobile ? onCloseMobile : undefined}
+          className="flex items-center gap-3 hover:opacity-95 transition-opacity cursor-pointer group"
+          title="Ir al Dashboard de Abaxial"
+        >
+          <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center p-1 shadow-sm transition-transform group-hover:scale-105 overflow-hidden">
+            <img
+              src="/logo-abaxial.png"
+              alt="Abaxial"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div>
+            <span className="font-black text-base tracking-tight text-slate-900 block leading-tight group-hover:text-brand-700 transition-colors">
+              Abaxial
+            </span>
+            <span className="text-[10px] uppercase font-bold tracking-widest text-brand-600 block">
+              Portal Técnico
+            </span>
+          </div>
+        </Link>
+
+        {isMobile && (
+          <button
+            type="button"
+            onClick={onCloseMobile}
+            className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+            aria-label="Cerrar menú"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
+      </div>
 
       {/* Navigation Links */}
       <nav className="flex-1 px-3 py-4 space-y-1.5 overflow-y-auto">
@@ -112,6 +136,7 @@ export const Sidebar: React.FC = () => {
           <NavLink
             key={item.path}
             to={item.path}
+            onClick={isMobile ? onCloseMobile : undefined}
             className={({ isActive }) =>
               `flex items-center gap-3.5 px-3.5 py-2.5 text-sm font-semibold rounded-xl transition-all ${
                 isActive
@@ -127,13 +152,48 @@ export const Sidebar: React.FC = () => {
       </nav>
 
       {/* Footer Branding */}
-      <div className="p-4 border-t border-slate-200 bg-slate-50/60 text-xs font-medium text-slate-500 flex items-center justify-between">
-        <span>Abaxial v1.0</span>
-        <div className="flex items-center gap-1.5 text-emerald-700 font-semibold text-[11px]">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>En línea</span>
+      <div className="p-3.5 border-t border-slate-200 bg-slate-50/70 space-y-2.5">
+        <div className="flex items-center gap-2.5">
+          <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-brand-600 to-emerald-500 flex items-center justify-center text-white font-black text-[10px] shadow-xs shrink-0">
+            AF
+          </div>
+          <div className="text-[11px] leading-tight text-slate-600 min-w-0">
+            <span className="block text-[9px] text-slate-400 font-semibold uppercase tracking-wider">Creada y gestionada por</span>
+            <span className="font-bold text-slate-800 truncate block">Alonso Feria Arriaza</span>
+          </div>
+        </div>
+        <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1.5 border-t border-slate-200/60">
+          <span className="font-medium text-[10px] text-slate-400">Portal Abaxial v1.0</span>
+          <div className="flex items-center gap-1.5 text-emerald-700 font-semibold text-[10px]">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>En línea</span>
+          </div>
         </div>
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Desktop Permanent Sidebar */}
+      <aside className="hidden lg:flex w-64 bg-white border-r border-slate-200 flex-col shrink-0 min-h-screen select-none">
+        {renderNavContent(false)}
+      </aside>
+
+      {/* Mobile Drawer */}
+      {mobileOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
+            onClick={onCloseMobile}
+          />
+          {/* Drawer Sidebar */}
+          <aside className="relative flex flex-col w-72 max-w-[85vw] h-full bg-white shadow-2xl z-50 animate-in slide-in-from-left duration-200 select-none">
+            {renderNavContent(true)}
+          </aside>
+        </div>
+      )}
+    </>
   );
 };

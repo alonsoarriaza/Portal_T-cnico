@@ -24,6 +24,10 @@ public class EquipoRequestDTO {
     private String marca;
     private String modelo;
     private String numeroSerie;
+    private String nombreEquipo;
+    private String ubicacion;
+    private String ultimaRevision;
+    private String url;
     private String estado;
     private LocalDate fechaAlta;
     private LocalDate fechaBaja;

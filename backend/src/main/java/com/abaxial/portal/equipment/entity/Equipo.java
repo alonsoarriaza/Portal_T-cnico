@@ -40,6 +40,18 @@ public class Equipo {
     @Column(name = "numero_serie", length = 100)
     private String numeroSerie;
 
+    @Column(name = "nombre_equipo", length = 150)
+    private String nombreEquipo;
+
+    @Column(length = 150)
+    private String ubicacion;
+
+    @Column(name = "ultima_revision", length = 100)
+    private String ultimaRevision;
+
+    @Column(length = 255)
+    private String url;
+
     @Builder.Default
     @Column(nullable = false, length = 50)
     private String estado = "OPERATIVO";

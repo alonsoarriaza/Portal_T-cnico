@@ -14,6 +14,10 @@ import java.util.Optional;
 @Repository
 public interface DocumentoRepository extends JpaRepository<Documento, Long> {
 
+    List<Documento> findByClienteIdAndActivoTrueOrderByNombreOriginalAsc(Long clienteId);
+
+    List<Documento> findByClienteIdOrderByNombreOriginalAsc(Long clienteId);
+
     List<Documento> findByClienteIdAndActivoTrueOrderByFechaCreacionDesc(Long clienteId);
 
     List<Documento> findByClienteIdOrderByFechaCreacionDesc(Long clienteId);
@@ -28,7 +32,8 @@ public interface DocumentoRepository extends JpaRepository<Documento, Long> {
            "(:categoria IS NULL OR :categoria = '' OR d.categoria = :categoria) AND " +
            "(:search IS NULL OR :search = '' OR LOWER(d.nombreOriginal) LIKE LOWER(CONCAT('%', :search, '%')) " +
            "OR LOWER(d.descripcion) LIKE LOWER(CONCAT('%', :search, '%')) " +
-           "OR LOWER(d.cliente.nombre) LIKE LOWER(CONCAT('%', :search, '%')))")
+           "OR LOWER(d.cliente.nombre) LIKE LOWER(CONCAT('%', :search, '%'))) " +
+           "ORDER BY LOWER(d.nombreOriginal) ASC")
     Page<Documento> findAllFiltered(
             @Param("clienteId") Long clienteId,
             @Param("categoria") String categoria,

@@ -86,11 +86,15 @@ export interface Equipo {
   clienteId: number;
   clienteNombre?: string;
   codigoInventario: string;
+  nombreEquipo?: string;
   tipo: string;
+  ubicacion?: string;
   marca?: string;
   modelo?: string;
   numeroSerie?: string;
-  estado: 'OPERATIVO' | 'EN_REPARACION' | 'BAJA' | 'OBSOLETO' | string;
+  estado: 'OPERATIVO' | 'EN_REPARACION' | 'BAJA' | 'OBSOLETO' | 'Alta' | string;
+  ultimaRevision?: string;
+  url?: string;
   fechaAlta?: string;
   fechaBaja?: string;
   observaciones?: string;
@@ -101,11 +105,15 @@ export interface Equipo {
 
 export interface EquipoRequest {
   codigoInventario?: string;
+  nombreEquipo?: string;
   tipo: string;
+  ubicacion?: string;
   marca?: string;
   modelo?: string;
   numeroSerie?: string;
   estado?: string;
+  ultimaRevision?: string;
+  url?: string;
   fechaAlta?: string;
   fechaBaja?: string;
   observaciones?: string;
@@ -329,4 +337,111 @@ export interface PermisoItem {
   nombre: string;
   categoria: string;
   descripcion?: string;
+}
+
+export interface FieldConflict {
+  entityType: string;
+  entityIdentifier: string;
+  fieldName: string;
+  existingValue: string;
+  importedValue: string;
+  message: string;
+}
+
+export interface EquipmentAssociationConflict {
+  equipmentReference: string;
+  existingClientCodigo: string;
+  existingClientNombre: string;
+  importedClientCodigo: string;
+  importedClientNombre: string;
+  message: string;
+}
+
+export interface ClientUpdatePreview {
+  clientId: number;
+  codigo: string;
+  nombre: string;
+  fieldsToFill: Record<string, string>;
+}
+
+export interface ParsedEquipmentPreview {
+  reference: string;
+  name: string;
+  type: string;
+  location?: string;
+  status?: string;
+  lastAction?: string;
+  url?: string;
+  clientName?: string;
+  clientCodigo?: string;
+}
+
+export interface ParsedContactPreview {
+  nombre: string;
+  apellidos?: string;
+  cargo?: string;
+  email?: string;
+  telefono?: string;
+  clientCodigo?: string;
+  clientNombre?: string;
+}
+
+export interface ParsedClientPreview {
+  codigo?: string;
+  nifCif?: string;
+  nombre?: string;
+  estado?: string;
+  mantenimiento?: string;
+  direccion?: string;
+  poblacion?: string;
+  provincia?: string;
+  gerente?: string;
+  equipments?: ParsedEquipmentPreview[];
+  contacts?: ParsedContactPreview[];
+}
+
+export interface ImportPlan {
+  clientsFound: number;
+  clientsToCreateCount: number;
+  clientsToUpdateCount: number;
+  clientsToSkipCount: number;
+  equipmentsFound: number;
+  equipmentsToCreateCount: number;
+  equipmentsToSkipCount: number;
+  contactsFound: number;
+  contactsToCreateCount: number;
+  contactsToSkipCount: number;
+  clientsToCreate: ParsedClientPreview[];
+  clientsToUpdate: ClientUpdatePreview[];
+  clientsToSkip: string[];
+  equipmentsToCreate: ParsedEquipmentPreview[];
+  equipmentsToSkip: string[];
+  contactsToCreate: ParsedContactPreview[];
+  contactsToSkip: string[];
+  conflicts: FieldConflict[];
+  associationConflicts: EquipmentAssociationConflict[];
+  warnings: string[];
+  errors: string[];
+}
+
+export interface ImportSummary {
+  clientsFound: number;
+  clientsCreated: number;
+  clientsMatched: number;
+  clientsUpdated: number;
+  equipmentsFound: number;
+  equipmentsCreated: number;
+  equipmentsMatched: number;
+  equipmentsSkipped: number;
+  contactsFound: number;
+  contactsCreated: number;
+  contactsMatched: number;
+  contactsSkipped: number;
+  conflictsCount: number;
+  errorsCount: number;
+  conflicts: FieldConflict[];
+  associationConflicts: EquipmentAssociationConflict[];
+  warnings: string[];
+  errors: string[];
+  details: string[];
 }

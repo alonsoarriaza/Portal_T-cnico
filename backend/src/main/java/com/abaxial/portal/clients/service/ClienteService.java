@@ -274,6 +274,25 @@ public class ClienteService {
         cambiarEstado(id, "BAJA", currentUsername);
     }
 
+    @Transactional
+    public void eliminarClientePermanente(Long id, String currentUsername) {
+        Cliente cliente = clienteRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado con ID: " + id));
+
+        String infoCliente = "Cliente " + cliente.getNombre() + " (" + cliente.getCodigo() + ") eliminado permanentemente con todos sus registros asociados";
+
+        auditoriaService.registrarAsync(
+                currentUsername,
+                "CLIENTE_ELIMINADO_PERMANENTE",
+                "Cliente",
+                cliente.getId(),
+                infoCliente
+        );
+
+        // CascadeType.ALL + orphanRemoval=true on entity handles cascading deletes
+        clienteRepository.delete(cliente);
+    }
+
     @Transactional(readOnly = true)
     public DashboardStatsDTO obtenerEstadisticasDashboard(String currentUsername) {
         long activos = clienteRepository.countByActivo(true);

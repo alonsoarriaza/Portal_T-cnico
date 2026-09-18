@@ -11,6 +11,7 @@ import {
   HardDrive,
   UserCheck,
   UserX,
+  Upload,
 } from 'lucide-react';
 import { clientesApi } from '../api/services';
 import { ClienteList, ClienteRequest } from '../types';
@@ -24,6 +25,7 @@ import { Modal } from '../components/common/Modal';
 import { Pagination } from '../components/common/Pagination';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
 import { EmptyState } from '../components/common/EmptyState';
+import { ImportClientsModal } from '../components/clients/ImportClientsModal';
 
 export const ClientesPage: React.FC = () => {
   const [clientes, setClientes] = useState<ClienteList[]>([]);
@@ -31,7 +33,7 @@ export const ClientesPage: React.FC = () => {
   const [totalElements, setTotalElements] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(0);
-  const [size, setSize] = useState(10);
+  const [size, setSize] = useState<number | 'ALL'>(10);
 
   // Filters
   const [search, setSearch] = useState('');
@@ -43,6 +45,8 @@ export const ClientesPage: React.FC = () => {
   // Modals
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isPermanentDeleteModalOpen, setIsPermanentDeleteModalOpen] = useState(false);
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   const [selectedCliente, setSelectedCliente] = useState<ClienteList | null>(null);
   const [formData, setFormData] = useState<ClienteRequest>({
     codigo: '',
@@ -58,21 +62,22 @@ export const ClientesPage: React.FC = () => {
   });
   const [isSaving, setIsSaving] = useState(false);
 
-  const { hasPermission } = useAuth();
+  const { hasPermission, hasRole } = useAuth();
   const { success, error } = useToast();
   const navigate = useNavigate();
 
   const loadClientes = useCallback(async () => {
     try {
       setLoading(true);
+      const isAll = size === 'ALL';
       const data = await clientesApi.list({
         search: search || undefined,
         estado: estado || undefined,
         mantenimiento: mantenimiento || undefined,
         provincia: provincia || undefined,
         includeInactive,
-        page,
-        size,
+        page: isAll ? 0 : page,
+        size: isAll ? 'ALL' : size,
       });
       setClientes(data.content);
       setTotalElements(data.totalElements);
@@ -176,6 +181,18 @@ export const ClientesPage: React.FC = () => {
     }
   };
 
+  const handlePermanentDelete = async () => {
+    if (!selectedCliente) return;
+    try {
+      await clientesApi.deletePermanente(selectedCliente.id);
+      success(`Cliente "${selectedCliente.nombre}" eliminado permanentemente`);
+      setIsPermanentDeleteModalOpen(false);
+      loadClientes();
+    } catch (err: any) {
+      error(err.response?.data?.message || 'Error al eliminar el cliente');
+    }
+  };
+
   const handleDownloadPdf = async (e: React.MouseEvent, id: number, nombre: string) => {
     e.stopPropagation();
     try {
@@ -206,11 +223,23 @@ export const ClientesPage: React.FC = () => {
             Administración de empresas clientes, contratos y parque de activos.
           </p>
         </div>
-        {hasPermission('CLIENTE_CREAR') && (
-          <Button variant="primary" size="sm" onClick={handleOpenCreate} leftIcon={<Plus className="w-4 h-4" />}>
-            Nuevo Cliente
-          </Button>
-        )}
+        <div className="flex items-center gap-2.5">
+          {hasPermission('CLIENTE_CREAR') && (
+            <>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => setIsImportModalOpen(true)}
+                leftIcon={<Upload className="w-4 h-4 text-brand-600" />}
+              >
+                Importar Clientes
+              </Button>
+              <Button variant="primary" size="sm" onClick={handleOpenCreate} leftIcon={<Plus className="w-4 h-4" />}>
+                Nuevo Cliente
+              </Button>
+            </>
+          )}
+        </div>
       </div>
 
       {/* Filters Bar */}
@@ -384,6 +413,18 @@ export const ClientesPage: React.FC = () => {
                             <UserX className="w-4 h-4" />
                           </button>
                         )}
+                        {hasRole('SUPER_ADMIN') && (
+                          <button
+                            onClick={() => {
+                              setSelectedCliente(c);
+                              setIsPermanentDeleteModalOpen(true);
+                            }}
+                            className="p-1 rounded text-red-700 hover:bg-red-50"
+                            title="Eliminar permanentemente"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        )}
                       </div>
                     </td>
                   </tr>
@@ -393,7 +434,6 @@ export const ClientesPage: React.FC = () => {
           </div>
         )}
 
-        {/* Pagination */}
         <div className="px-4 border-t border-slate-100">
           <Pagination
             page={page}
@@ -401,7 +441,11 @@ export const ClientesPage: React.FC = () => {
             totalElements={totalElements}
             size={size}
             onPageChange={setPage}
-            onSizeChange={setSize}
+            onSizeChange={(newSize) => {
+              setSize(newSize);
+              setPage(0);
+            }}
+            sizeOptions={[10, 25, 50, 100, 'ALL']}
           />
         </div>
       </div>
@@ -527,6 +571,45 @@ export const ClientesPage: React.FC = () => {
           La información y registros asociados permanecerán en el sistema para fines de trazabilidad.
         </p>
       </Modal>
+
+      {/* Modal: Confirmar Eliminación Permanente */}
+      <Modal
+        isOpen={isPermanentDeleteModalOpen}
+        onClose={() => setIsPermanentDeleteModalOpen(false)}
+        title="Eliminar cliente permanentemente"
+        subtitle="⚠️ Acción irreversible"
+        maxWidth="md"
+        footer={
+          <>
+            <Button variant="outline" size="sm" onClick={() => setIsPermanentDeleteModalOpen(false)}>
+              Cancelar
+            </Button>
+            <Button variant="danger" size="sm" onClick={handlePermanentDelete}>
+              Eliminar Permanentemente
+            </Button>
+          </>
+        }
+      >
+        <div className="space-y-3">
+          <p className="text-sm text-red-700 font-semibold">
+            ¿Estás seguro de que deseas ELIMINAR PERMANENTEMENTE al cliente{' '}
+            <strong className="text-red-900">{selectedCliente?.nombre}</strong>?
+          </p>
+          <p className="text-xs text-red-600 bg-red-50 p-3 rounded-lg border border-red-200">
+            Esta acción es <strong>IRREVERSIBLE</strong>. Se eliminará el cliente y TODOS sus registros asociados
+            (equipos, contactos, servicios, webs, documentos y eventos) de forma permanente de la base de datos.
+          </p>
+        </div>
+      </Modal>
+
+      {/* Modal: Importación Inteligente */}
+      <ImportClientsModal
+        isOpen={isImportModalOpen}
+        onClose={() => setIsImportModalOpen(false)}
+        onSuccess={() => {
+          loadClientes();
+        }}
+      />
     </div>
   );
 };

@@ -30,7 +30,10 @@ public class DocumentoDTO {
 
     public static DocumentoDTO fromEntity(Documento d) {
         List<DocumentoVersionDTO> versList = d.getVersiones() != null
-                ? d.getVersiones().stream().map(DocumentoVersionDTO::fromEntity).collect(Collectors.toList())
+                ? d.getVersiones().stream()
+                    .sorted((v1, v2) -> Integer.compare(v2.getVersion(), v1.getVersion()))
+                    .map(DocumentoVersionDTO::fromEntity)
+                    .collect(Collectors.toList())
                 : List.of();
 
         DocumentoVersionDTO ultima = versList.isEmpty() ? null : versList.get(0);

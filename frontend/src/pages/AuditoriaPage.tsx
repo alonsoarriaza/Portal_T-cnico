@@ -28,7 +28,7 @@ export const AuditoriaPage: React.FC = () => {
   const [totalElements, setTotalElements] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(0);
-  const [size, setSize] = useState(15);
+  const [size, setSize] = useState<number | 'ALL'>(15);
 
   // Filters
   const [search, setSearch] = useState('');
@@ -44,14 +44,15 @@ export const AuditoriaPage: React.FC = () => {
   const loadLogs = useCallback(async () => {
     try {
       setLoading(true);
+      const isAll = size === 'ALL';
       const data = await auditoriaApi.list({
         search: search || undefined,
         accion: accion || undefined,
         entidad: entidad || undefined,
         desde: desde ? `${desde}T00:00:00` : undefined,
         hasta: hasta ? `${hasta}T23:59:59` : undefined,
-        page,
-        size,
+        page: isAll ? 0 : page,
+        size: isAll ? 'ALL' : size,
       });
       setLogs(data.content);
       setTotalElements(data.totalElements);
@@ -322,7 +323,11 @@ export const AuditoriaPage: React.FC = () => {
             totalElements={totalElements}
             size={size}
             onPageChange={setPage}
-            onSizeChange={setSize}
+            onSizeChange={(newSize) => {
+              setSize(newSize);
+              setPage(0);
+            }}
+            sizeOptions={[10, 25, 50, 100, 'ALL']}
           />
         </div>
       </div>

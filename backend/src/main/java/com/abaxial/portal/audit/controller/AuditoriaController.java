@@ -33,12 +33,25 @@ public class AuditoriaController {
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime desde,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime hasta,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "15") int size
+            @RequestParam(defaultValue = "15") String size
     ) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "fecha"));
+        boolean isAll = "ALL".equalsIgnoreCase(size) || "TODOS".equalsIgnoreCase(size) || "-1".equals(size);
+        Pageable pageable;
+        if (isAll) {
+            pageable = PageRequest.of(0, 100_000, Sort.by(Sort.Direction.DESC, "fecha"));
+        } else {
+            int pageSize = 15;
+            try { pageSize = Integer.parseInt(size); if (pageSize <= 0) pageSize = 15; } catch (NumberFormatException e) { pageSize = 15; }
+            pageable = PageRequest.of(page, pageSize, Sort.by(Sort.Direction.DESC, "fecha"));
+        }
         PaginatedResponse<AuditoriaDTO> resultado = auditoriaService.listarAuditorias(
                 usuarioId, search, accion, entidad, desde, hasta, pageable
         );
+        if (isAll) {
+            resultado.setSize((int) resultado.getTotalElements());
+            resultado.setPage(0);
+            resultado.setTotalPages(resultado.getTotalElements() > 0 ? 1 : 0);
+        }
         return ResponseEntity.ok(ApiResponse.ok(resultado));
     }
 

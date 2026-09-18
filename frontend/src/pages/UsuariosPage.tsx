@@ -22,7 +22,7 @@ export const UsuariosPage: React.FC = () => {
   const [totalElements, setTotalElements] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(0);
-  const [size, setSize] = useState(10);
+  const [size, setSize] = useState<number | 'ALL'>(10);
   const [search, setSearch] = useState('');
   const [activeTab, setActiveTab] = useState<'usuarios' | 'roles'>('usuarios');
 
@@ -45,8 +45,9 @@ export const UsuariosPage: React.FC = () => {
   const loadData = useCallback(async () => {
     try {
       setLoading(true);
+      const isAll = size === 'ALL';
       const [usersData, rolesData, permisosData] = await Promise.all([
-        usuariosApi.list({ search: search || undefined, page, size }),
+        usuariosApi.list({ search: search || undefined, page: isAll ? 0 : page, size: isAll ? 'ALL' : size }),
         usuariosApi.listRoles(),
         usuariosApi.listPermisos(),
       ]);
@@ -263,7 +264,11 @@ export const UsuariosPage: React.FC = () => {
                 totalElements={totalElements}
                 size={size}
                 onPageChange={setPage}
-                onSizeChange={setSize}
+                onSizeChange={(newSize) => {
+                  setSize(newSize);
+                  setPage(0);
+                }}
+                sizeOptions={[10, 25, 50, 100, 'ALL']}
               />
             </div>
           </div>

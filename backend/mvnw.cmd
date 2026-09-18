@@ -31,7 +31,6 @@
 @SET "MAVEN_OPTS=-Djavax.net.ssl.trustStoreType=Windows-ROOT"
 @IF "%__MVNW_ARG0_NAME__%"=="" (SET __MVNW_ARG0_NAME__=%~nx0)
 
-... 
 @SET __MVNW_CMD__=
 @SET __MVNW_ERROR__=
 @SET __MVNW_PSMODULEP_SAVE=%PSModulePath%

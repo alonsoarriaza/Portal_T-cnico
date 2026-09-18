@@ -1439,11 +1439,11 @@ export const CronogramaPage: React.FC = () => {
                     clienteId: e.target.value ? Number(e.target.value) : undefined,
                   })
                 }
-                className="w-full px-3 py-2 text-sm font-semibold rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white"
+                className="w-full px-3 py-2 text-sm font-semibold rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white text-slate-900"
               >
                 <option value="">-- Sin cliente asignado --</option>
                 {clientes.map((c) => (
-                  <option key={c.id} value={c.id}>
+                  <option key={c.id} value={c.id} className="text-slate-900">
                     {c.nombre} ({c.codigo})
                   </option>
                 ))}
@@ -1457,12 +1457,12 @@ export const CronogramaPage: React.FC = () => {
               <select
                 value={formData.prioridad}
                 onChange={(e) => setFormData({ ...formData, prioridad: e.target.value })}
-                className="w-full px-3 py-2 text-sm font-semibold rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white"
+                className="w-full px-3 py-2 text-sm font-semibold rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white text-slate-900"
               >
-                <option value="BAJA">Baja</option>
-                <option value="MEDIA">Media</option>
-                <option value="ALTA">Alta</option>
-                <option value="URGENTE">Urgente</option>
+                <option value="BAJA" className="text-slate-900">Baja</option>
+                <option value="MEDIA" className="text-slate-900">Media</option>
+                <option value="ALTA" className="text-slate-900">Alta</option>
+                <option value="URGENTE" className="text-slate-900">Urgente</option>
               </select>
             </div>
           </div>
@@ -1491,12 +1491,12 @@ export const CronogramaPage: React.FC = () => {
             <select
               value={formData.estado}
               onChange={(e) => setFormData({ ...formData, estado: e.target.value })}
-              className="w-full px-3 py-2 text-sm font-semibold rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white"
+              className="w-full px-3 py-2 text-sm font-semibold rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 bg-white text-slate-900"
             >
-              <option value="PENDIENTE">Pendiente</option>
-              <option value="EN_PROCESO">En Proceso</option>
-              <option value="COMPLETADO">Completado</option>
-              <option value="CANCELADO">Cancelado</option>
+              <option value="PENDIENTE" className="text-slate-900">Pendiente</option>
+              <option value="EN_PROCESO" className="text-slate-900">En Proceso</option>
+              <option value="COMPLETADO" className="text-slate-900">Completado</option>
+              <option value="CANCELADO" className="text-slate-900">Cancelado</option>
             </select>
           </div>
 

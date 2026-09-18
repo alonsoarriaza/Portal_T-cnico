@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+﻿import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Users2,
@@ -133,7 +133,7 @@ export const DashboardPage: React.FC = () => {
             ¡Hola, {user?.nombreCompleto || user?.username}!
           </h1>
           <p className="text-sm font-medium text-slate-500 mt-1">
-            Panel de control centralizado de <span className="font-semibold text-brand-600">ABAXIAL Portal Técnico</span>.
+            Panel de control centralizado de <span className="font-semibold text-brand-600">Abaxial Portal Técnico</span>.
           </p>
         </div>
         <div className="flex items-center gap-3">

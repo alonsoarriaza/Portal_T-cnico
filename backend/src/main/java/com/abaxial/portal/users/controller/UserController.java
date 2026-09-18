@@ -29,10 +29,23 @@ public class UserController {
             @RequestParam(required = false) String search,
             @RequestParam(defaultValue = "false") boolean includeInactive,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "15") int size
+            @RequestParam(defaultValue = "15") String size
     ) {
-        Pageable pageable = PageRequest.of(page, size);
+        boolean isAll = "ALL".equalsIgnoreCase(size) || "TODOS".equalsIgnoreCase(size) || "-1".equals(size);
+        Pageable pageable;
+        if (isAll) {
+            pageable = PageRequest.of(0, 100_000);
+        } else {
+            int pageSize = 15;
+            try { pageSize = Integer.parseInt(size); if (pageSize <= 0) pageSize = 15; } catch (NumberFormatException e) { pageSize = 15; }
+            pageable = PageRequest.of(page, pageSize);
+        }
         PaginatedResponse<UserResponseDTO> resultado = userService.listarUsuarios(search, includeInactive, pageable);
+        if (isAll) {
+            resultado.setSize((int) resultado.getTotalElements());
+            resultado.setPage(0);
+            resultado.setTotalPages(resultado.getTotalElements() > 0 ? 1 : 0);
+        }
         return ResponseEntity.ok(ApiResponse.ok(resultado));
     }
 
