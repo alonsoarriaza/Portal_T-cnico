@@ -332,7 +332,7 @@ export const UsuariosPage: React.FC = () => {
             label="Correo Electrónico *"
             type="email"
             required
-            placeholder="juan.perez@abaxial.es"
+            placeholder="juan.perez@coanda.es"
             value={formData.email || ''}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           />

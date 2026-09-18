@@ -44,8 +44,8 @@ export const LoginPage: React.FC = () => {
 
   const handleAutoFillAndLogin = () => {
     setUsernameOrEmail('admin');
-    setPassword('AdminAbaxial2026!');
-    handleLogin('admin', 'AdminAbaxial2026!');
+    setPassword('AdminCoanda2026!');
+    handleLogin('admin', 'AdminCoanda2026!');
   };
 
   return (
@@ -55,14 +55,14 @@ export const LoginPage: React.FC = () => {
         <div className="text-center space-y-3">
           <div className="w-20 h-20 rounded-2xl bg-white border border-slate-200/80 flex items-center justify-center p-2 mx-auto shadow-md">
             <img
-              src="/logo-abaxial.png"
-              alt="Logo Abaxial"
+              src="/logo-coanda.png"
+              alt="Logo Coanda"
               className="w-full h-full object-contain"
             />
           </div>
           <div>
             <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-              Portal Abaxial
+              Portal Coanda
             </h1>
             <p className="text-xs text-slate-500 mt-1">
               Acceso exclusivo para soporte y gestión técnica
@@ -134,7 +134,7 @@ export const LoginPage: React.FC = () => {
         <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center text-xs text-slate-600 space-y-1">
           <div className="font-semibold text-slate-800">Credenciales por defecto:</div>
           <div>Usuario: <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-slate-900 font-bold">admin</code></div>
-          <div>Contraseña: <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-slate-900 font-bold">AdminAbaxial2026!</code> o <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-slate-900 font-bold">admin</code></div>
+          <div>Contraseña: <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-slate-900 font-bold">AdminCoanda2026!</code> o <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200 text-slate-900 font-bold">admin</code></div>
         </div>
       </div>
 
@@ -149,7 +149,7 @@ export const LoginPage: React.FC = () => {
           </span>
         </div>
         <p className="text-[11px] text-slate-400">
-          © {new Date().getFullYear()} Abaxial · Portal Técnico Empresarial · Todos los derechos reservados
+          © {new Date().getFullYear()} Coanda · Portal Técnico Empresarial · Todos los derechos reservados
         </p>
       </div>
     </div>

@@ -1215,10 +1215,10 @@ export const ClienteDetailPage: React.FC = () => {
                       {/* URL Enlace Soporte */}
                       <div className="sm:col-span-2">
                         <Input
-                          label="URL Enlace de Soporte Abaxial"
+                          label="URL Enlace de Soporte Coanda"
                           value={editEquipoForm.url || ''}
                           onChange={(e) => setEditEquipoForm({ ...editEquipoForm, url: e.target.value })}
-                          placeholder="https://soporte.abaxial.es/pc_list.php?ref=43037-00"
+                          placeholder="https://soporte.coanda.es/pc_list.php?ref=43037-00"
                         />
                       </div>
 
@@ -1734,7 +1734,7 @@ export const ClienteDetailPage: React.FC = () => {
             </div>
           </div>
           <p className="text-xs text-slate-600">
-            El sistema Abaxial mantiene un historial inmutable. ¿Deseas almacenar este archivo como la <strong>versión v{(conflictDocInfo?.version || 1) + 1}</strong>?
+            El sistema Coanda mantiene un historial inmutable. ¿Deseas almacenar este archivo como la <strong>versión v{(conflictDocInfo?.version || 1) + 1}</strong>?
           </p>
 
           {isUploading && uploadProgress !== null && (
@@ -1887,8 +1887,8 @@ export const ClienteDetailPage: React.FC = () => {
             />
             <div className="sm:col-span-2">
               <Input
-                label="URL Enlace de Soporte Abaxial"
-                placeholder="https://soporte.abaxial.es/pc_list.php?ref=..."
+                label="URL Enlace de Soporte Coanda"
+                placeholder="https://soporte.coanda.es/pc_list.php?ref=..."
                 value={equipoForm.url || ''}
                 onChange={(e) => setEquipoForm({ ...equipoForm, url: e.target.value })}
               />
@@ -1991,7 +1991,7 @@ export const ClienteDetailPage: React.FC = () => {
             />
             <div className="sm:col-span-2">
               <Input
-                label="URL Enlace de Soporte Abaxial"
+                label="URL Enlace de Soporte Coanda"
                 value={editEquipoForm.url || ''}
                 onChange={(e) => setEditEquipoForm({ ...editEquipoForm, url: e.target.value })}
               />

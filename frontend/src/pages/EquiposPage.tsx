@@ -401,7 +401,7 @@ export const EquiposPage: React.FC = () => {
               label="Enlace / URL de Soporte"
               value={editForm.url || ''}
               onChange={(e) => setEditForm({ ...editForm, url: e.target.value })}
-              placeholder="https://soporte.abaxial.es/pc_list.php?ref=..."
+              placeholder="https://soporte.coanda.es/pc_list.php?ref=..."
             />
           </div>
 

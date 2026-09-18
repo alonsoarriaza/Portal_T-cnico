@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import {
   LayoutDashboard,
@@ -96,18 +96,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onCloseMobile }) =
           to="/dashboard"
           onClick={isMobile ? onCloseMobile : undefined}
           className="flex items-center gap-3 hover:opacity-95 transition-opacity cursor-pointer group"
-          title="Ir al Dashboard de Abaxial"
+          title="Ir al Dashboard de Coanda"
         >
           <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center p-1 shadow-sm transition-transform group-hover:scale-105 overflow-hidden">
             <img
-              src="/logo-abaxial.png"
-              alt="Abaxial"
+              src="/logo-coanda.png"
+              alt="Coanda"
               className="w-full h-full object-contain"
             />
           </div>
           <div>
             <span className="font-black text-base tracking-tight text-slate-900 block leading-tight group-hover:text-brand-700 transition-colors">
-              Abaxial
+              Coanda
             </span>
             <span className="text-[10px] uppercase font-bold tracking-widest text-brand-600 block">
               Portal Técnico
@@ -163,7 +163,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onCloseMobile }) =
           </div>
         </div>
         <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1.5 border-t border-slate-200/60">
-          <span className="font-medium text-[10px] text-slate-400">Portal Abaxial v1.0</span>
+          <span className="font-medium text-[10px] text-slate-400">Portal Coanda v1.0</span>
           <div className="flex items-center gap-1.5 text-emerald-700 font-semibold text-[10px]">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span>En línea</span>

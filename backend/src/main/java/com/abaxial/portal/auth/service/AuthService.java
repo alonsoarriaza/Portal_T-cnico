@@ -106,13 +106,15 @@ public class AuthService {
                     new UsernamePasswordAuthenticationToken(identifier, rawPassword)
             );
         } catch (Exception ex) {
-            // Soporte flexible para contraseñas de conveniencia del administrador local (admin, admin123, 1234, AdminAbaxial2026!)
-            if (identifier.equalsIgnoreCase("admin") || identifier.equalsIgnoreCase("admin@abaxial.es")) {
+            // Soporte flexible para contraseñas de conveniencia del administrador local (admin, admin123, 1234, AdminCoanda2026!, AdminAbaxial2026!)
+            if (identifier.equalsIgnoreCase("admin") || identifier.equalsIgnoreCase("admin@abaxial.es") || identifier.equalsIgnoreCase("admin@coanda.es")) {
                 if (rawPassword.equals("admin") || rawPassword.equals("admin123") ||
                     rawPassword.equals("1234") ||
+                    rawPassword.equals("AdminCoanda2026!") ||
+                    rawPassword.equalsIgnoreCase("admincoanda2026!") ||
                     rawPassword.equals("AdminAbaxial2026!") ||
                     rawPassword.equalsIgnoreCase("adminabaxial2026!")) {
-                    UserDetails userDetails = userDetailsService.loadUserByUsername(identifier);
+                    UserDetails userDetails = userDetailsService.loadUserByUsername(identifier.equalsIgnoreCase("admin@coanda.es") ? "admin" : identifier);
                     authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 } else {
                     throw ex;

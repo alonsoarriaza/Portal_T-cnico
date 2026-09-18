@@ -134,7 +134,7 @@ export const ImportClientsModal: React.FC<ImportClientsModalProps> = ({
                 Arrastra tu documento o selecciónalo
               </h4>
               <p className="text-xs text-slate-500 mb-4 max-w-md mx-auto">
-                Formatos compatibles: <strong className="text-slate-700">TXT (documeto_clientes.txt), HTML (.html, .htm)</strong>. El sistema procesará clientes y sus equipos inventariados.
+                Formatos compatibles: <strong className="text-slate-700">TXT (.txt), HTML (.html, .htm)</strong>. El sistema procesará clientes y sus equipos inventariados.
               </p>
 
               <label className="inline-flex">

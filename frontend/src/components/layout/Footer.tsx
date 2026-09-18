@@ -8,13 +8,13 @@ export const Footer: React.FC = () => {
       {/* Left: Corporate Info */}
       <div className="flex items-center gap-2.5">
         <img
-          src="/logo-abaxial.png"
-          alt="Logo Abaxial"
+          src="/logo-coanda.png"
+          alt="Logo Coanda"
           className="w-5 h-5 object-contain rounded"
         />
         <span>
           © {currentYear}{' '}
-          <strong className="text-slate-800 font-semibold">Abaxial</strong>{' '}
+          <strong className="text-slate-800 font-semibold">Coanda</strong>{' '}
           · Portal Técnico Empresarial
         </span>
         <span className="hidden md:inline text-slate-300">|</span>

@@ -1,4 +1,4 @@
-﻿import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
+import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import { ApiResponse, AuthResponse } from '../types';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
@@ -12,18 +12,18 @@ export const apiClient = axios.create({
 });
 
 // Storage tokens
-export const getAccessToken = (): string | null => localStorage.getItem('abaxial_access_token');
-export const getRefreshToken = (): string | null => localStorage.getItem('abaxial_refresh_token');
+export const getAccessToken = (): string | null => localStorage.getItem('coanda_access_token');
+export const getRefreshToken = (): string | null => localStorage.getItem('coanda_refresh_token');
 
 export const setTokens = (accessToken: string, refreshToken: string) => {
-  localStorage.setItem('abaxial_access_token', accessToken);
-  localStorage.setItem('abaxial_refresh_token', refreshToken);
+  localStorage.setItem('coanda_access_token', accessToken);
+  localStorage.setItem('coanda_refresh_token', refreshToken);
 };
 
 export const clearTokens = () => {
-  localStorage.removeItem('abaxial_access_token');
-  localStorage.removeItem('abaxial_refresh_token');
-  localStorage.removeItem('abaxial_user');
+  localStorage.removeItem('coanda_access_token');
+  localStorage.removeItem('coanda_refresh_token');
+  localStorage.removeItem('coanda_user');
 };
 
 // Request Interceptor

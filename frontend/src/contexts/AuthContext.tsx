@@ -1,4 +1,4 @@
-﻿import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { UserProfile } from '../types';
 import { authApi } from '../api/services';
 import { getAccessToken, setTokens, clearTokens } from '../api/client';
@@ -18,7 +18,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<UserProfile | null>(() => {
-    const saved = localStorage.getItem('abaxial_user');
+    const saved = localStorage.getItem('coanda_user');
     return saved ? JSON.parse(saved) : null;
   });
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -27,7 +27,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const profile = await authApi.getMe();
       setUser(profile);
-      localStorage.setItem('abaxial_user', JSON.stringify(profile));
+      localStorage.setItem('coanda_user', JSON.stringify(profile));
     } catch (err) {
       console.warn('Error refrescando perfil del usuario:', err);
       setUser(null);
@@ -63,7 +63,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const res = await authApi.login(reqBody);
       setTokens(res.accessToken, res.refreshToken);
       setUser(res.user);
-      localStorage.setItem('abaxial_user', JSON.stringify(res.user));
+      localStorage.setItem('coanda_user', JSON.stringify(res.user));
     } finally {
       setIsLoading(false);
     }

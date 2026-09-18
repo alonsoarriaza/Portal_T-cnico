@@ -25,8 +25,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobile }) => {
 
         {/* Mobile Header Brand */}
         <div className="flex items-center gap-2 lg:hidden">
-          <img src="/logo-abaxial.png" alt="Abaxial" className="h-7 w-7 object-contain rounded" />
-          <span className="font-black text-sm tracking-tight text-slate-900">Abaxial</span>
+          <img src="/logo-coanda.png" alt="Coanda" className="h-7 w-7 object-contain rounded" />
+          <span className="font-black text-sm tracking-tight text-slate-900">Coanda</span>
         </div>
 
         <h2 className="text-sm font-semibold text-slate-800 hidden lg:block">

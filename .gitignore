@@ -39,3 +39,15 @@ backend/storage/
 *.sw?
 .DS_Store
 Thumbs.db
+
+# Sensitive Client, Equipment & Dump Data
+documeto_clientes.txt
+*clientes*.txt
+*clientes*.sql
+*equipos*.txt
+*equipos*.sql
+database/seed/load_clientes_soporte.sql
+*.dump
+*.backup
+docs/
+

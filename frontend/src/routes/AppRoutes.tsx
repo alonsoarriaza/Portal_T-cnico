@@ -51,7 +51,7 @@ export const AppRoutes: React.FC = () => {
   if (isLoading) {
     return (
       <div className="h-screen bg-slate-950 flex items-center justify-center">
-        <LoadingSpinner message="Iniciando Portal Abaxial..." />
+        <LoadingSpinner message="Iniciando Portal Coanda..." />
       </div>
     );
   }
